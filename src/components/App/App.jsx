@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { nanoid } from 'nanoid';
-import ListContacts from './ListContacts';
-import SearchContact from './SerchContact/SearchContact';
-import ContactForm from './ContactForm';
+import ListContacts from '../ListContacts';
+import SearchContact from '../SerchContact/SearchContact';
+import ContactForm from '../ContactForm';
+import { Wrapper, TitleText } from './App.style';
 
 class App extends Component {
   state = {
@@ -61,8 +62,8 @@ class App extends Component {
     const { filter } = this.state;
     const filteredContact = this.getFilterContact();
     return (
-      <div>
-        <h1>Phonebook</h1>
+      <Wrapper>
+        <TitleText>Phonebook</TitleText>
         <ContactForm handleSubmit={this.handleSubmit} />
         <SearchContact value={filter} onChange={this.changeFilter} />
         <h2>Contacts</h2>
@@ -70,7 +71,7 @@ class App extends Component {
           filter={filteredContact}
           onDeleteContacts={this.deleteContact}
         />
-      </div>
+      </Wrapper>
     );
   }
 }

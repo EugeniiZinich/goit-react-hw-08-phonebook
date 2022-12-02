@@ -1,17 +1,18 @@
 import PropTypes from 'prop-types';
+import { FilterInput, FilterWrapper } from './SearchContact.style';
 
 const SearchContact = ({ value, onChange }) => {
   return (
-    <label>
+    <FilterWrapper>
       <p>Find contacts by name</p>
-      <input
+      <FilterInput
         type="text"
         name="name"
         required
         value={value}
         onChange={onChange}
-      ></input>
-    </label>
+      ></FilterInput>
+    </FilterWrapper>
   );
 };
 

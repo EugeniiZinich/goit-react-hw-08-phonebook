@@ -1,20 +1,21 @@
 import PropTypes from 'prop-types';
+import { ListWrap, ContactCard, DeleteBtn } from './ListContacts.style';
 
 const ListContacts = ({ filter, onDeleteContacts }) => {
   return (
     <>
-      <ul>
+      <ListWrap>
         {filter.map(({ name, id, number }) => {
           return (
-            <li key={id}>
+            <ContactCard key={id}>
               {name}: {number}
-              <button type="button" onClick={() => onDeleteContacts(id)}>
-                DELETE
-              </button>
-            </li>
+              <DeleteBtn type="button" onClick={() => onDeleteContacts(id)}>
+                Delete contact
+              </DeleteBtn>
+            </ContactCard>
           );
         })}
-      </ul>
+      </ListWrap>
     </>
   );
 };
