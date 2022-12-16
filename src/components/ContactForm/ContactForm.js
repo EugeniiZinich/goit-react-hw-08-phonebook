@@ -14,7 +14,6 @@ const ContactForm = ({ handleSubmit }) => {
         setName(value);
         break;
       case 'number':
-        setName(value);
         setNumber(value);
         break;
 
