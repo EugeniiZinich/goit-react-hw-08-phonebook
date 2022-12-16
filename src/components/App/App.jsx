@@ -13,6 +13,8 @@ export default function App() {
     if (parseContact) {
       return parseContact;
     }
+
+    return [];
   });
   const [filter, setFilter] = useState('');
 
