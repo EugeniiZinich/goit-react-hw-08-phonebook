@@ -7,7 +7,7 @@ import { Wrapper, TitleText } from './App.style';
 // import contacts from '../contacts/contacts.json';
 
 export default function App() {
-  const [contact, setContact] = useState(() => {
+  const [contacts, setContacts] = useState(() => {
     const contact = localStorage.getItem('userContact');
     const parseContact = JSON.parse(contact);
     if (parseContact) {
@@ -19,8 +19,8 @@ export default function App() {
   const [filter, setFilter] = useState('');
 
   useEffect(() => {
-    localStorage.setItem('userContact', JSON.stringify(contact));
-  }, [contact]);
+    localStorage.setItem('userContact', JSON.stringify(contacts));
+  }, [contacts]);
 
   const handleSubmit = (name, number) => {
     const newContact = {
@@ -29,16 +29,14 @@ export default function App() {
       number,
     };
 
-    console.log(newContact);
-
-    for (const contacts of contact) {
-      if (newContact.name.toLowerCase() === contacts.name.toLowerCase()) {
+    for (const contact of contacts) {
+      if (newContact.name.toLowerCase() === contact.name.toLowerCase()) {
         alert(`${newContact.name} is already in contacts`);
         return;
       }
     }
 
-    setContact(prevState => [newContact, ...prevState]);
+    setContacts(prevState => [newContact, ...prevState]);
   };
 
   const changeFilter = e => {
@@ -48,19 +46,13 @@ export default function App() {
   const getFilterContact = () => {
     const toNormalazedFilter = filter.toLowerCase();
 
-    return contact.filter(contact =>
+    return contacts.filter(contact =>
       contact.name.toLowerCase().includes(toNormalazedFilter)
     );
   };
 
-  // const deleteContact = contactId => {
-  //   setContact(prevState => ({
-  //     contacts: prevState.contacts.filter(contact => contact.id !== contactId),
-  //   }));
-  // };
-
   const deleteContact = contactId => {
-    setContact(contact.filter(contact => contact.id !== contactId));
+    setContacts(contacts.filter(contact => contact.id !== contactId));
   };
 
   return (
