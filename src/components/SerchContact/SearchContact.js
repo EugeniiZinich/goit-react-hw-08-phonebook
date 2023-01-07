@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { FilterInput, FilterWrapper } from './SearchContact.style';
 import { filterContact } from 'redux/actions';
 
-const SearchContact = ({ value, onChange }) => {
+const SearchContact = () => {
   const [filter, setFilter] = useState('');
 
   const dispatch = useDispatch();
@@ -11,7 +11,6 @@ const SearchContact = ({ value, onChange }) => {
   const changeFilter = e => {
     const value = e.currentTarget.value;
     setFilter(value);
-    if (!value) return;
 
     dispatch(filterContact(value));
   };

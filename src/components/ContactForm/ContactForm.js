@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-// Імпортуємо хук
+// import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-// Імпортуємо генератор екшену
 import { addContact } from 'redux/actions';
 import { FormSubmit } from './ContactForm.style';
 
-const ContactForm = ({ handleSubmit }) => {
+const ContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
@@ -71,6 +69,8 @@ const ContactForm = ({ handleSubmit }) => {
   );
 };
 
+export default ContactForm;
+
 // class ContactForm extends Component {
 //   state = {
 //     name: '',
@@ -132,8 +132,6 @@ const ContactForm = ({ handleSubmit }) => {
 //   }
 // }
 
-export default ContactForm;
-
-ContactForm.propTypes = {
-  handleSubmit: PropTypes.func,
-};
+// ContactForm.propTypes = {
+//   handleSubmit: PropTypes.func,
+// };

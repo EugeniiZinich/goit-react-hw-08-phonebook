@@ -1,41 +1,44 @@
-import React, { useState, useEffect } from 'react';
-import { nanoid } from 'nanoid';
+// import React, { useState, useEffect } from 'react';
+// import { useSelector } from 'react-redux';
+// import { getFilterContact, getContacts } from 'redux/selectors';
+// import { nanoid } from 'nanoid';
 import ListContacts from '../ListContacts';
 import SearchContact from '../SerchContact/SearchContact';
 import ContactForm from '../ContactForm';
 import { Wrapper, TitleText } from './App.style';
 
 export default function App() {
-  const [contacts, setContacts] = useState(() => {
-    const contact = localStorage.getItem('userContact');
-    const parseContact = JSON.parse(contact);
-    if (parseContact) {
-      return parseContact;
-    }
-    return [];
-  });
+  // const [contacts, setContacts] = useState(() => {
+  //   const contact = localStorage.getItem('userContact');
+  //   const parseContact = JSON.parse(contact);
+  //   if (parseContact) {
+  //     return parseContact;
+  //   }
+  //   return [];
+  // });
+
   // const [filter, setFilter] = useState('');
 
-  useEffect(() => {
-    localStorage.setItem('userContact', JSON.stringify(contacts));
-  }, [contacts]);
+  // useEffect(() => {
+  //   localStorage.setItem('userContact', JSON.stringify(contacts));
+  // }, [contacts]);
 
-  const handleSubmit = (name, number) => {
-    const newContact = {
-      id: nanoid(),
-      name,
-      number,
-    };
+  // const handleSubmit = (name, number) => {
+  //   const newContact = {
+  //     id: nanoid(),
+  //     name,
+  //     number,
+  //   };
 
-    for (const contact of contacts) {
-      if (newContact.name.toLowerCase() === contact.name.toLowerCase()) {
-        alert(`${newContact.name} is already in contacts`);
-        return;
-      }
-    }
+  //   for (const contact of contacts) {
+  //     if (newContact.name.toLowerCase() === contact.name.toLowerCase()) {
+  //       alert(`${newContact.name} is already in contacts`);
+  //       return;
+  //     }
+  //   }
 
-    setContacts(prevState => [newContact, ...prevState]);
-  };
+  //   setContacts(prevState => [newContact, ...prevState]);
+  // };
 
   // const changeFilter = e => {
   //   setFilter(e.currentTarget.value);
@@ -49,19 +52,19 @@ export default function App() {
   //   );
   // };
 
-  const deleteContact = contactId => {
-    setContacts(contacts.filter(contact => contact.id !== contactId));
-  };
+  // const deleteContact = contactId => {
+  //   setContacts(contacts.filter(contact => contact.id !== contactId));
+  // };
 
   return (
     <Wrapper>
       <TitleText>Phonebook</TitleText>
-      <ContactForm handleSubmit={handleSubmit} />
+      <ContactForm />
       <SearchContact />
       <h2>Contacts</h2>
       <ListContacts
-        // filter={getFilterContact()}
-        onDeleteContacts={deleteContact}
+      // filter={getFilterContact()}
+      // onDeleteContacts={deleteContact}
       />
     </Wrapper>
   );
