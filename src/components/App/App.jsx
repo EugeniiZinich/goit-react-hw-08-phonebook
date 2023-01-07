@@ -4,7 +4,6 @@ import ListContacts from '../ListContacts';
 import SearchContact from '../SerchContact/SearchContact';
 import ContactForm from '../ContactForm';
 import { Wrapper, TitleText } from './App.style';
-// import contacts from '../contacts/contacts.json';
 
 export default function App() {
   const [contacts, setContacts] = useState(() => {
@@ -13,10 +12,9 @@ export default function App() {
     if (parseContact) {
       return parseContact;
     }
-
     return [];
   });
-  const [filter, setFilter] = useState('');
+  // const [filter, setFilter] = useState('');
 
   useEffect(() => {
     localStorage.setItem('userContact', JSON.stringify(contacts));
@@ -39,17 +37,17 @@ export default function App() {
     setContacts(prevState => [newContact, ...prevState]);
   };
 
-  const changeFilter = e => {
-    setFilter(e.currentTarget.value);
-  };
+  // const changeFilter = e => {
+  //   setFilter(e.currentTarget.value);
+  // };
 
-  const getFilterContact = () => {
-    const toNormalazedFilter = filter.toLowerCase();
+  // const getFilterContact = () => {
+  //   const toNormalazedFilter = filter.toLowerCase();
 
-    return contacts.filter(contact =>
-      contact.name.toLowerCase().includes(toNormalazedFilter)
-    );
-  };
+  //   return contacts.filter(contact =>
+  //     contact.name.toLowerCase().includes(toNormalazedFilter)
+  //   );
+  // };
 
   const deleteContact = contactId => {
     setContacts(contacts.filter(contact => contact.id !== contactId));
@@ -59,10 +57,10 @@ export default function App() {
     <Wrapper>
       <TitleText>Phonebook</TitleText>
       <ContactForm handleSubmit={handleSubmit} />
-      <SearchContact value={filter} onChange={changeFilter} />
+      <SearchContact />
       <h2>Contacts</h2>
       <ListContacts
-        filter={getFilterContact()}
+        // filter={getFilterContact()}
         onDeleteContacts={deleteContact}
       />
     </Wrapper>

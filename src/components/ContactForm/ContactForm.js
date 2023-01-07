@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+// Імпортуємо хук
+import { useDispatch } from 'react-redux';
+// Імпортуємо генератор екшену
+import { addContact } from 'redux/actions';
 import { FormSubmit } from './ContactForm.style';
 
 const ContactForm = ({ handleSubmit }) => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
+
+  const dispatch = useDispatch();
 
   const handleChange = e => {
     const { name, value } = e.currentTarget;
@@ -25,7 +31,7 @@ const ContactForm = ({ handleSubmit }) => {
   const formSubmit = e => {
     e.preventDefault();
 
-    handleSubmit(name, number);
+    dispatch(addContact(name, number));
 
     setName('');
     setNumber('');

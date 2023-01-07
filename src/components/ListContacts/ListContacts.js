@@ -1,17 +1,20 @@
 import PropTypes from 'prop-types';
-import { ListWrap, ContactCard, DeleteBtn } from './ListContacts.style';
+import { useSelector } from 'react-redux';
+import { ListWrap, ContactCard } from './ListContacts.style';
+import { getContacts } from 'redux/selectors';
+
+import { ContactItem } from 'components/ContactItem/ContactItem';
 
 const ListContacts = ({ filter, onDeleteContacts }) => {
+  const contacts = useSelector(getContacts);
+
   return (
     <>
       <ListWrap>
-        {filter.map(({ name, id, number }) => {
+        {contacts.map(({ name, id, number }) => {
           return (
             <ContactCard key={id}>
-              {name}: {number}
-              <DeleteBtn type="button" onClick={() => onDeleteContacts(id)}>
-                Delete contact
-              </DeleteBtn>
+              <ContactItem name={name} id={id} number={number} />
             </ContactCard>
           );
         })}
