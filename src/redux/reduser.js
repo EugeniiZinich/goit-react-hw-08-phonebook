@@ -1,4 +1,6 @@
 import { combineReducers } from 'redux';
+import { createSlice } from '@reduxjs/toolkit';
+import { nanoid } from 'nanoid';
 
 const initialState = {
   contacts: [
@@ -37,26 +39,6 @@ const contactReducer = (state = initialState, action) => {
   }
 };
 
-// const filterReducer = (state = initialState, action) => {
-//   switch (action.type) {
-//     case 'contact/filterContact':
-//       return Object.assign({}, state, {
-//         searchText: action.text,
-//       });
-
-//     default:
-//       return state;
-//   }
-// };
-
 export const rootReducer = combineReducers({
   contacts: contactReducer,
-  //   filter: filterReducer,
 });
-
-//  return {
-//    ...state,
-//    contacts: state.contacts.filter(contacts =>
-//      contacts.name.toLowerCase().includes(action.payload.name.toLowerCase())
-//    ),
-//  };

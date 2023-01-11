@@ -1,6 +1,6 @@
 import { nanoid } from 'nanoid';
 
-export const addContact = (name, number) => {
+const addContact = (name, number) => {
   return {
     type: 'contact/addContact',
     payload: {
@@ -10,7 +10,7 @@ export const addContact = (name, number) => {
     },
   };
 };
-export const deleteContact = contactId => {
+const deleteContact = contactId => {
   return {
     type: 'contact/deleteContact',
     payload: {
@@ -19,7 +19,7 @@ export const deleteContact = contactId => {
   };
 };
 
-export const filterContact = name => {
+const filterContact = name => {
   return {
     type: 'contact/filterContact',
     payload: {

@@ -1,21 +1,20 @@
-// import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { ListWrap, ContactCard } from './ListContacts.style';
-import { getContacts } from 'redux/selectors';
-
+import { getContacts, getFilteredContact } from 'redux/selectors';
 import { ContactItem } from 'components/ContactItem/ContactItem';
 
 const ListContacts = () => {
-  const { contacts, filter } = useSelector(getContacts);
+  const contacts = useSelector(getContacts);
+  const filter = useSelector(getFilteredContact);
 
   const getFilterContact = () => {
     if (filter.name === '') {
       return contacts;
     } else {
-      const toNormalazedFilter = filter.toLowerCase();
+      const toNormalazedFilter = filter.trim().toLowerCase();
 
       return contacts.filter(contact =>
-        contact.name.toLowerCase().includes(toNormalazedFilter)
+        contact.name.trim().toLowerCase().includes(toNormalazedFilter)
       );
     }
   };

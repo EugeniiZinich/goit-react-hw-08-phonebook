@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-// import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
-import { addContact } from 'redux/actions';
+import { useSelector, useDispatch } from 'react-redux';
+import { getContacts } from 'redux/selectors';
+import toast from 'react-hot-toast';
+import { addContact } from 'redux/tasksSlice';
 import { FormSubmit } from './ContactForm.style';
 
 const ContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
+  const contacts = useSelector(getContacts);
 
   const dispatch = useDispatch();
 
@@ -28,6 +30,13 @@ const ContactForm = () => {
 
   const formSubmit = e => {
     e.preventDefault();
+
+    for (const contact of contacts) {
+      if (contact.name.trim().toLowerCase === name.trim().toLowerCase) {
+        toast.error(`Contact with name ${name} is already exist! `);
+        return;
+      }
+    }
 
     dispatch(addContact(name, number));
 
