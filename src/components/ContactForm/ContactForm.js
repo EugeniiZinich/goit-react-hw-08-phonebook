@@ -31,11 +31,19 @@ const ContactForm = () => {
   const formSubmit = e => {
     e.preventDefault();
 
-    for (const contact of contacts) {
-      if (contact.name.trim().toLowerCase === name.trim().toLowerCase) {
-        toast.error(`Contact with name ${name} is already exist! `);
-        return;
-      }
+    const addedName = contacts.contact.some(
+      contact => contact.name.toLowerCase() === name.toLowerCase()
+    );
+    const addedNumber = contacts.contact.some(
+      contact => contact.number === number
+    );
+
+    if (addedName) {
+      toast.error(`Contact with name ${name} is already exist! `);
+      return;
+    } else if (addedNumber) {
+      toast.error(`Contact with number ${number} is already exist! `);
+      return;
     }
 
     dispatch(addContact(name, number));

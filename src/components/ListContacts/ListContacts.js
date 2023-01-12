@@ -9,11 +9,11 @@ const ListContacts = () => {
 
   const getFilterContact = () => {
     if (filter.name === '') {
-      return contacts;
+      return contacts.contact;
     } else {
       const toNormalazedFilter = filter.trim().toLowerCase();
 
-      return contacts.filter(contact =>
+      return contacts.contact.filter(contact =>
         contact.name.trim().toLowerCase().includes(toNormalazedFilter)
       );
     }
