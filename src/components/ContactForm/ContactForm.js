@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getContacts } from 'redux/selectors';
 import toast from 'react-hot-toast';
-import { addContact } from 'redux/tasksSlice';
+// import { addContact } from 'redux/contactSlice';
+import { addContact } from 'redux/operation';
+
 import { FormSubmit } from './ContactForm.style';
 
 const ContactForm = () => {
@@ -46,7 +48,7 @@ const ContactForm = () => {
       return;
     }
 
-    dispatch(addContact(name, number));
+    dispatch(addContact({ name, number }));
 
     setName('');
     setNumber('');

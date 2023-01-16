@@ -1,13 +1,13 @@
 import { useDispatch } from 'react-redux';
 import { DeleteBtn } from 'components/ListContacts/ListContacts.style';
-import { deleteContact } from 'redux/tasksSlice';
+import { deleteContacts } from 'redux/operation';
 
 export const ContactItem = ({ name, id, number }) => {
   const dispatch = useDispatch();
   return (
     <div>
       {name}: {number}
-      <DeleteBtn type="button" onClick={() => dispatch(deleteContact(id))}>
+      <DeleteBtn type="button" onClick={() => dispatch(deleteContacts(id))}>
         Delete contact
       </DeleteBtn>
     </div>

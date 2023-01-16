@@ -1,10 +1,24 @@
+import { useEffect } from 'react';
 import { Toaster } from 'react-hot-toast';
+import { useDispatch, useSelector } from 'react-redux';
 import ListContacts from '../ListContacts';
 import SearchContact from '../SerchContact/SearchContact';
 import ContactForm from '../ContactForm';
+import { fetchContacts } from 'redux/operation';
 import { Wrapper, TitleText } from './App.style';
+import { getIsLoading, getError } from 'redux/selectors';
 
 export default function App() {
+  const dispatch = useDispatch();
+  const isLoading = useSelector(getIsLoading);
+  console.log(isLoading);
+  const error = useSelector(getError);
+  console.log(error);
+
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
+
   return (
     <Wrapper>
       <TitleText>Phonebook</TitleText>

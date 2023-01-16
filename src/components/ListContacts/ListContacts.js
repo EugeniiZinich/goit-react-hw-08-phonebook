@@ -8,12 +8,12 @@ const ListContacts = () => {
   const filter = useSelector(getFilteredContact);
 
   const getFilterContact = () => {
-    if (filter.name === '') {
-      return contacts.contact;
+    if (filter === '') {
+      return contacts.items;
     } else {
       const toNormalazedFilter = filter.trim().toLowerCase();
 
-      return contacts.contact.filter(contact =>
+      return contacts.items.filter(contact =>
         contact.name.trim().toLowerCase().includes(toNormalazedFilter)
       );
     }
@@ -22,13 +22,14 @@ const ListContacts = () => {
   return (
     <>
       <ListWrap>
-        {getFilterContact().map(({ name, id, number }) => {
-          return (
-            <ContactCard key={id}>
-              <ContactItem name={name} id={id} number={number} />
-            </ContactCard>
-          );
-        })}
+        {contacts.items.length > 0 &&
+          getFilterContact().map(({ name, id, contact }) => {
+            return (
+              <ContactCard key={id}>
+                <ContactItem name={name} id={id} number={contact} />
+              </ContactCard>
+            );
+          })}
       </ListWrap>
     </>
   );

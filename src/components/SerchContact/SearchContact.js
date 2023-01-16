@@ -11,6 +11,7 @@ const SearchContact = () => {
 
   const changeFilter = e => {
     const value = e.currentTarget.value;
+
     setFilter(value);
 
     dispatch(filterContact(value));
