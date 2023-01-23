@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const FormSubmit = styled.form`
-  position: relative;
+  /* position: relative; */
   width: 350px;
   height: 400px;
   margin-top: 50px;
@@ -9,7 +9,7 @@ export const FormSubmit = styled.form`
   padding: 40px;
   box-sizing: border-box;
   background: #ecf0f3;
-  box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
+  /* box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white; */
 
   label,
   input,

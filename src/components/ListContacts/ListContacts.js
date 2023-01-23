@@ -1,7 +1,10 @@
 import { useSelector } from 'react-redux';
-import { ListWrap, ContactCard } from './ListContacts.style';
+// import { createPortal } from 'react-dom';
+import { ContactList, ContactCard, Container } from './ListContacts.style';
 import { getContacts, getFilteredContact } from 'redux/selectors';
 import { ContactItem } from 'components/ContactItem/ContactItem';
+
+// const modalRoot = document.querySelector('#contact-root');
 
 const ListContacts = () => {
   const contacts = useSelector(getContacts);
@@ -20,8 +23,8 @@ const ListContacts = () => {
   };
 
   return (
-    <>
-      <ListWrap>
+    <Container>
+      <ContactList>
         {contacts.items.length > 0 &&
           getFilterContact().map(({ name, id, contact }) => {
             return (
@@ -30,8 +33,8 @@ const ListContacts = () => {
               </ContactCard>
             );
           })}
-      </ListWrap>
-    </>
+      </ContactList>
+    </Container>
   );
 };
 

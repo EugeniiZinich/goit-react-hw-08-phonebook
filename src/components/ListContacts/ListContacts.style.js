@@ -1,12 +1,25 @@
 import styled from 'styled-components';
 
-export const ListWrap = styled.ul`
+export const Container = styled.div`
   display: flex;
+  width: 350px;
+  height: 400px;
+`;
+
+export const ContactList = styled.ul`
+  display: flex;
+
   align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
+  flex-direction: column;
+  background-color: gray;
   gap: 20px;
   margin-bottom: 100px;
+  overflow-y: scroll;
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  border-radius: 20px;
 `;
 
 export const ContactCard = styled.li`

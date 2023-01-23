@@ -11,11 +11,10 @@ const ContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   const contacts = useSelector(getContacts);
-
   const dispatch = useDispatch();
 
   const handleChange = e => {
-    const { name, value } = e.currentTarget;
+    const { name, value } = e.target;
 
     switch (name) {
       case 'name':
@@ -33,10 +32,10 @@ const ContactForm = () => {
   const formSubmit = e => {
     e.preventDefault();
 
-    const addedName = contacts.contact.some(
+    const addedName = contacts.items.some(
       contact => contact.name.toLowerCase() === name.toLowerCase()
     );
-    const addedNumber = contacts.contact.some(
+    const addedNumber = contacts.items.some(
       contact => contact.number === number
     );
 

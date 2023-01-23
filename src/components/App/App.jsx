@@ -5,29 +5,31 @@ import ListContacts from '../ListContacts';
 import SearchContact from '../SerchContact/SearchContact';
 import ContactForm from '../ContactForm';
 import { fetchContacts } from 'redux/operation';
-import { Wrapper, TitleText } from './App.style';
-import { getIsLoading, getError } from 'redux/selectors';
+import { Wrapper, TitleText, Inner } from './App.style';
+// import { getIsLoading, getError } from 'redux/selectors';
+// import { AnimateBack } from 'components/AnimateBack/AnimateBack';
 
 export default function App() {
   const dispatch = useDispatch();
-  const isLoading = useSelector(getIsLoading);
-  console.log(isLoading);
-  const error = useSelector(getError);
-  console.log(error);
+  // const isLoading = useSelector(getIsLoading);
+  // const error = useSelector(getError);
 
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
 
   return (
-    <Wrapper>
-      <TitleText>Phonebook</TitleText>
-      <ContactForm />
-      <SearchContact />
-      <h2>Contacts</h2>
-      <ListContacts />
-      <Toaster />
-    </Wrapper>
+    <>
+      <Wrapper>
+        <TitleText>Phonebook</TitleText>
+        <ContactForm />
+        <h2>Contacts</h2>
+        <SearchContact />
+        <ListContacts />
+
+        <Toaster />
+      </Wrapper>
+    </>
   );
 }
 
