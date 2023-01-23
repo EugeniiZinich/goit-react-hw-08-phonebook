@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
 import { Toaster } from 'react-hot-toast';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import ListContacts from '../ListContacts';
 import SearchContact from '../SerchContact/SearchContact';
 import ContactForm from '../ContactForm';
 import { fetchContacts } from 'redux/operation';
-import { Wrapper, TitleText, Inner } from './App.style';
+import { Wrapper, TitleText } from './App.style';
 // import { getIsLoading, getError } from 'redux/selectors';
 // import { AnimateBack } from 'components/AnimateBack/AnimateBack';
 
