@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getContacts } from 'redux/selectors';
+import { getContacts } from 'redux/ContactsSlice/selectors';
 import toast from 'react-hot-toast';
 // import { addContact } from 'redux/contactSlice';
-import { addContact } from 'redux/operation';
+import { addContact } from 'redux/ContactsSlice/operation';
 
 import { FormSubmit } from './ContactForm.style';
 

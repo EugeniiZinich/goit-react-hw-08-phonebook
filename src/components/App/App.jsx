@@ -1,11 +1,18 @@
 import { useEffect } from 'react';
-import { Toaster } from 'react-hot-toast';
+// import { Toaster } from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
-import ListContacts from '../ListContacts';
-import SearchContact from '../SerchContact/SearchContact';
-import ContactForm from '../ContactForm';
-import { fetchContacts } from 'redux/operation';
-import { Wrapper, TitleText } from './App.style';
+import { Route, Routes } from 'react-router-dom';
+// import ListContacts from '../ListContacts';
+// import SearchContact from '../SerchContact/SearchContact';
+// import ContactForm from '../ContactForm';
+// import { fetchContacts } from 'redux/ContactsSlice/operation';
+// import { Wrapper, TitleText } from './App.style';
+import { AppBar } from 'components/AppBar/AppBar';
+import Home from 'pages/Home/Home';
+import Contacts from 'pages/Contacts/Contacts';
+import Login from 'pages/Login/Login';
+import Register from 'pages/Register/Register';
+import { fetchCurrentUser } from 'redux/Auth/operation';
 // import { getIsLoading, getError } from 'redux/selectors';
 // import { AnimateBack } from 'components/AnimateBack/AnimateBack';
 
@@ -15,12 +22,20 @@ export default function App() {
   // const error = useSelector(getError);
 
   useEffect(() => {
-    dispatch(fetchContacts());
+    dispatch(fetchCurrentUser());
   }, [dispatch]);
 
   return (
     <>
-      <Wrapper>
+      <AppBar />
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/contacts" element={<Contacts />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
+      {/* <Wrapper>
         <TitleText>Phonebook</TitleText>
         <ContactForm />
         <h2>Contacts</h2>
@@ -28,7 +43,7 @@ export default function App() {
         <ListContacts />
 
         <Toaster />
-      </Wrapper>
+      </Wrapper> */}
     </>
   );
 }

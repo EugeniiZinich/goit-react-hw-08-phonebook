@@ -1,6 +1,6 @@
 export const getContacts = state => state.contacts;
 
-export const getFilteredContact = state => state.name;
+export const getFilteredContact = state => state.filter.value;
 
 export const getIsLoading = state => state.contacts.isLoading;
 
