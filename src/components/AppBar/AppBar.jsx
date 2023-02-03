@@ -2,7 +2,7 @@ import { AuthNav } from 'components/AuthNav/AuthNav';
 import { UserMenu } from 'components/UserMenu/UserMenu';
 import { useAuth } from 'components/hooks/useAuth';
 import { Navigation } from 'components/Navigation/Navigation';
-import { AppBar, Typography, Container, Toolbar } from '@mui/material';
+import { AppBar, Container, Toolbar } from '@mui/material';
 
 export const NavBar = () => {
   const { isLoggedIn } = useAuth();
