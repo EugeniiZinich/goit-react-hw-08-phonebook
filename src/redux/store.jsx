@@ -13,6 +13,7 @@ import {
 import { contactReducer } from './ContactsSlice/contactSlice';
 import { authReducer } from './Auth/authSlice';
 import { filterReducer } from './FilterSlice/filtersSlice';
+import { modalReducer } from './Modal/modalSlice';
 
 const persistConfig = {
   key: 'auth',
@@ -27,6 +28,7 @@ export const store = configureStore({
     auth: persistReducer(persistConfig, authReducer),
     contacts: contactReducer,
     filter: filterReducer,
+    modal: modalReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
