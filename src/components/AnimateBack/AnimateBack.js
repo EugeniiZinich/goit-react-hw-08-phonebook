@@ -2,23 +2,21 @@ import styled from 'styled-components';
 
 export const AnimateBack = ({ children }) => {
   return (
-    <>
-      <Area>
-        <AnimateList>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-        </AnimateList>
-        {children}
-      </Area>
-    </>
+    <Area>
+      <AnimateList>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </AnimateList>
+      {children}
+    </Area>
   );
 };
 
@@ -27,11 +25,10 @@ const Area = styled.div`
   background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);
   width: 100%;
   height: 100vh;
-  /* z-index: -1; */
 `;
 
 const AnimateList = styled.ul`
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
+export const AnimateBack = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -9,7 +9,6 @@ export const Wrapper = styled.div`
 
 export const TitleText = styled.h1`
   text-transform: uppercase;
-  /* font-family: verdana; */
   font-size: 30px;
 
   color: #f5f5f5;

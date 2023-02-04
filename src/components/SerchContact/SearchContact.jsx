@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { FilterInput, FilterWrapper } from './SearchContact.style';
+import { FilterInput, Container } from './SearchContact.style';
 
 import { filterContact } from 'redux/FilterSlice/filtersSlice';
 
@@ -18,16 +18,18 @@ const SearchContact = () => {
   };
 
   return (
-    <FilterWrapper>
-      <p>Find contacts by name</p>
-      <FilterInput
-        type="text"
-        name="name"
-        required
-        value={filter}
-        onChange={changeFilter}
-      ></FilterInput>
-    </FilterWrapper>
+    <Container>
+      <h3>Find contacts by name</h3>
+      <label>
+        <FilterInput
+          type="text"
+          name="name"
+          required
+          value={filter}
+          onChange={changeFilter}
+        ></FilterInput>
+      </label>
+    </Container>
   );
 };
 

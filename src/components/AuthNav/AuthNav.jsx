@@ -1,12 +1,12 @@
 import { Typography } from '@mui/material';
 import { NavLink } from 'react-router-dom';
+import { Container } from './AuthNav.styled';
 
 export const AuthNav = () => {
   return (
-    <div>
+    <Container>
       <NavLink to="/register">
         <Typography sx={{ my: 2, color: 'white', display: 'block' }}>
-          {/* <Button>Register</Button> */}
           Register
         </Typography>
       </NavLink>
@@ -15,6 +15,6 @@ export const AuthNav = () => {
           Log In
         </Typography>
       </NavLink>
-    </div>
+    </Container>
   );
 };

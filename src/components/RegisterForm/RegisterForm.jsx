@@ -1,14 +1,17 @@
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
+import { TextField, Button } from '@mui/material';
 import { register } from 'redux/Auth/operation';
-
-// import css from './RegisterForm.module.css';
+import { Form, Container, Title } from './RegisterForm.styled';
+import { useAuth } from 'components/hooks/useAuth';
+import { Spinner } from 'Loader/Loader';
 
 export const RegisterForm = () => {
   const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const { isRegistered } = useAuth();
 
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
@@ -37,32 +40,58 @@ export const RegisterForm = () => {
   };
 
   return (
-    <>
-      <form onSubmit={handleSubmit} autoComplete="off">
+    <Container>
+      <Form onSubmit={handleSubmit} autoComplete="off">
+        <Title>Create Account</Title>
         <label>
-          Username
-          <input type="text" name="name" value={name} onChange={handleChange} />
+          <TextField
+            id="outlined-basic"
+            label="Name"
+            variant="outlined"
+            required
+            type="text"
+            name="name"
+            value={name}
+            onChange={handleChange}
+            sx={{ width: '25ch' }}
+          />
         </label>
         <label>
-          Email
-          <input
+          <TextField
+            id="outlined-basic"
+            label="Email"
+            variant="outlined"
+            required
             type="email"
             name="email"
             value={email}
             onChange={handleChange}
+            sx={{ width: '25ch' }}
           />
         </label>
         <label>
-          Password
-          <input
+          <TextField
+            id="outlined-basic"
+            label="Password"
+            variant="outlined"
+            required
             type="password"
             name="password"
+            minlength="6"
+            maxlength="20"
             value={password}
             onChange={handleChange}
+            sx={{ width: '25ch' }}
           />
         </label>
-        <button type="submit">Register</button>
-      </form>
-    </>
+        {isRegistered ? (
+          <Spinner />
+        ) : (
+          <Button variant="contained" type="submit">
+            Register
+          </Button>
+        )}
+      </Form>
+    </Container>
   );
 };

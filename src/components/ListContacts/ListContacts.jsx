@@ -1,12 +1,9 @@
 import { useSelector } from 'react-redux';
-// import { createPortal } from 'react-dom';
 import { ContactList, ContactCard, Container } from './ListContacts.style';
 import { getContacts, getFilteredContact } from 'redux/ContactsSlice/selectors';
 import { ContactItem } from 'components/ContactItem/ContactItem';
 
-// const modalRoot = document.querySelector('#contact-root');
-
-const ListContacts = () => {
+const ListContacts = ({ children }) => {
   const { items } = useSelector(getContacts);
 
   const filter = useSelector(getFilteredContact);
@@ -22,19 +19,24 @@ const ListContacts = () => {
     }
   };
 
+  const contact = getFilterContact();
+
   return (
-    <Container>
-      <ContactList>
-        {items.length > 0 &&
-          getFilterContact().map(({ name, id, number }) => {
-            return (
-              <ContactCard key={id}>
-                <ContactItem name={name} id={id} number={number} />
-              </ContactCard>
-            );
-          })}
-      </ContactList>
-    </Container>
+    <>
+      <Container>
+        {children}
+        <ContactList>
+          {items.length > 0 &&
+            [...contact].reverse().map(({ name, id, number }) => {
+              return (
+                <ContactCard key={id}>
+                  <ContactItem name={name} id={id} number={number} />
+                </ContactCard>
+              );
+            })}
+        </ContactList>
+      </Container>
+    </>
   );
 };
 

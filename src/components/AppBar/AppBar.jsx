@@ -13,6 +13,7 @@ export const NavBar = () => {
           sx={{
             display: 'flex',
             gap: '10px',
+            color: 'red',
             justifyContent: 'space-between',
             alignContent: 'center',
           }}
