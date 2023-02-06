@@ -42,7 +42,6 @@ export const LoginForm = () => {
       <Form onSubmit={handleSubmit} autoComplete="off">
         <label>
           <TextField
-            id="outlined-basic"
             label="Email"
             variant="outlined"
             sx={{ width: '25ch' }}
@@ -57,10 +56,9 @@ export const LoginForm = () => {
           <TextField
             type="password"
             name="password"
-            id="outlined-basic"
             required
             label="Password"
-            minlength="6"
+            minlength="8"
             maxlength="20"
             variant="outlined"
             sx={{ width: '25ch' }}

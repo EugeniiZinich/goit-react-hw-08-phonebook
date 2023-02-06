@@ -58,7 +58,6 @@ export const RegisterForm = () => {
         </label>
         <label>
           <TextField
-            id="outlined-basic"
             label="Email"
             variant="outlined"
             required
@@ -71,13 +70,12 @@ export const RegisterForm = () => {
         </label>
         <label>
           <TextField
-            id="outlined-basic"
             label="Password"
             variant="outlined"
             required
             type="password"
             name="password"
-            minlength="6"
+            minlength="8"
             maxlength="20"
             value={password}
             onChange={handleChange}
