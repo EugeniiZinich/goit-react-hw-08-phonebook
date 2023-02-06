@@ -41,12 +41,3 @@ const ListContacts = ({ children }) => {
 };
 
 export default ListContacts;
-
-// ListContacts.propTypes = {
-//   onDeleteContacts: PropTypes.func.isRequired,
-//   // filter: PropTypes.shape({
-//   //   id: PropTypes.string.isRequired,
-//   //   name: PropTypes.string.isRequired,
-//   //   number: PropTypes.string.isRequired,
-//   // }).isRequired,
-// };
