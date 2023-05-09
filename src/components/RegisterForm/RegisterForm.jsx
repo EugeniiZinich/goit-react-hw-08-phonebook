@@ -82,6 +82,8 @@ export const RegisterForm = () => {
             sx={{ width: '25ch' }}
           />
         </label>
+
+        <a href="http://localhost:3030/api/auth/google">Sign up with google</a>
         {isRegistered ? (
           <Spinner />
         ) : (

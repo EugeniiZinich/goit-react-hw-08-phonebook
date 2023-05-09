@@ -7,7 +7,6 @@ import { RestrictedRoute } from 'components/RestrictedRoute';
 import { PrivateRoute } from 'components/PrivateRoute';
 import { useAuth } from 'components/hooks/useAuth';
 import { GlobalStyle } from 'components/GlobalStyle';
-import { AnimateBack } from 'components/AnimateBack/AnimateBack';
 
 const HomePage = lazy(() => import('../../pages/HomePage/HomePage'));
 const ContactPage = lazy(() => import('../../pages/Contacts/Contacts'));
@@ -26,7 +25,7 @@ export default function App() {
   }, [dispatch]);
 
   return (
-    <AnimateBack>
+    <>
       {isRefreshing ? (
         'Page is loading...'
       ) : (
@@ -71,6 +70,6 @@ export default function App() {
           </Routes>
         </>
       )}
-    </AnimateBack>
+    </>
   );
 }

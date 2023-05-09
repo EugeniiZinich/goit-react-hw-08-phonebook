@@ -20,9 +20,12 @@ export const TitleText = styled.h1`
     1px 30px 60px rgba(16, 16, 16, 0.4);
 `;
 
-export const Inner = styled.div`
+export const AppContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
+  /* flex-direction: column; */
+
+  max-width: 1200px;
+  height: 100%;
 `;
