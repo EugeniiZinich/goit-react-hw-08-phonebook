@@ -2,9 +2,9 @@ import { Button, Container } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
 export const HomeContainer = styled(Container)(({ theme }) => ({
+  position: 'relative',
   maxWidth: 1200,
   height: '100%',
-  //   border: '1px solid red',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',

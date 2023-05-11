@@ -7,19 +7,15 @@ export const Navigation = () => {
 
   return (
     <nav>
-      <Box
-        sx={{
-          display: { xs: '1', md: 'flex' },
-          gap: '10px',
-          alignContent: 'stretch',
-        }}
-      >
+      <Box>
         <NavLink to="/">
           <Typography
             sx={{
               my: 2,
-              color: 'white',
+              color: '#1976d2',
               display: 'block',
+              fontWeight: 'bold',
+              fontSize: 26,
             }}
           >
             Home

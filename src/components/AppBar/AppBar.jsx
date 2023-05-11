@@ -1,45 +1,48 @@
 import { Container, Toolbar } from '@mui/material';
-// import styled from '@emotion/styled';
+import { createTheme, ThemeProvider } from '@mui/material';
 import { AuthNav } from 'components/AuthNav/AuthNav';
 import { UserMenu } from 'components/UserMenu/UserMenu';
 import { useAuth } from 'components/hooks/useAuth';
 import { Navigation } from 'components/Navigation/Navigation';
-// import { NavContainer } from './AppBar.styled';
 import { AppBarContainer } from './AppBar.mui.style';
 
-// const StyledAppBar = styled(AppBar)(({ theme }) => ({
-//   width: 400,
-//   backgroundColor: 'rgb(169, 186, 217)',
-//   alignContent: 'center',
-// }));
+const theme = createTheme({
+  breakpoints: {
+    values: {
+      mobile: 320,
+      tablet: 768,
+      laptop: 1024,
+      desktop: 1200,
+    },
+  },
+});
 
 export const NavBar = () => {
   const { isLoggedIn } = useAuth();
   return (
-    <header>
-      <Container
-        sx={{
+    <ThemeProvider theme={theme}>
+      <div
+        style={{
           display: 'flex',
-
+          alignItems: 'center',
           justifyContent: 'center',
-          alignContent: 'center',
         }}
       >
-        <AppBarContainer>
-          <Toolbar
-            sx={{
-              display: 'flex',
-              gap: '10px',
-              color: 'blue',
-              justifyContent: 'space-between',
-              alignContent: 'center',
-            }}
-          >
-            <Navigation />
-            {isLoggedIn ? <UserMenu /> : <AuthNav />}
-          </Toolbar>
-        </AppBarContainer>
-      </Container>
-    </header>
+        <Container sx={{}}>
+          <AppBarContainer position="absolute">
+            <Toolbar
+              variant="dense"
+              sx={{
+                display: 'flex',
+                justifyContent: 'space-between',
+              }}
+            >
+              <Navigation />
+              {isLoggedIn ? <UserMenu /> : <AuthNav />}
+            </Toolbar>
+          </AppBarContainer>
+        </Container>
+      </div>
+    </ThemeProvider>
   );
 };
