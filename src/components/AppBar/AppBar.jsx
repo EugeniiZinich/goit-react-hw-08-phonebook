@@ -21,28 +21,20 @@ export const NavBar = () => {
   const { isLoggedIn } = useAuth();
   return (
     <ThemeProvider theme={theme}>
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-      >
-        <Container sx={{}}>
-          <AppBarContainer position="absolute">
-            <Toolbar
-              variant="dense"
-              sx={{
-                display: 'flex',
-                justifyContent: 'space-between',
-              }}
-            >
-              <Navigation />
-              {isLoggedIn ? <UserMenu /> : <AuthNav />}
-            </Toolbar>
-          </AppBarContainer>
-        </Container>
-      </div>
+      <Container disableGutters maxWidth={false}>
+        <AppBarContainer position="absolute">
+          <Toolbar
+            variant="dense"
+            sx={{
+              display: 'flex',
+              justifyContent: 'space-between',
+            }}
+          >
+            <Navigation />
+            {isLoggedIn ? <UserMenu /> : <AuthNav />}
+          </Toolbar>
+        </AppBarContainer>
+      </Container>
     </ThemeProvider>
   );
 };

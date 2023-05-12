@@ -1,10 +1,11 @@
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
-import { TextField, Button } from '@mui/material';
+import { TextField } from '@mui/material';
 import { register } from 'redux/Auth/operation';
-import { Form, Container, Title } from './RegisterForm.styled';
+import { Form, Title } from './RegisterForm.styled';
 import { useAuth } from 'components/hooks/useAuth';
 import { Spinner } from 'Loader/Loader';
+import { RegisterFormContainer, StyledBtn } from './RegisterForm.mui.style';
 
 export const RegisterForm = () => {
   const dispatch = useDispatch();
@@ -40,9 +41,10 @@ export const RegisterForm = () => {
   };
 
   return (
-    <Container>
+    <RegisterFormContainer>
       <Form onSubmit={handleSubmit} autoComplete="off">
-        <Title>Create Account</Title>
+        <Title>Sign UP width</Title>
+        <a href="http://localhost:3030/api/auth/google">GOOGLE</a>
         <label>
           <TextField
             id="outlined-basic"
@@ -53,7 +55,7 @@ export const RegisterForm = () => {
             name="name"
             value={name}
             onChange={handleChange}
-            sx={{ width: '25ch' }}
+            sx={{ width: '305px' }}
           />
         </label>
         <label>
@@ -65,7 +67,7 @@ export const RegisterForm = () => {
             name="email"
             value={email}
             onChange={handleChange}
-            sx={{ width: '25ch' }}
+            sx={{ width: '305px' }}
           />
         </label>
         <label>
@@ -79,19 +81,18 @@ export const RegisterForm = () => {
             maxlength="20"
             value={password}
             onChange={handleChange}
-            sx={{ width: '25ch' }}
+            sx={{ width: '305px' }}
           />
         </label>
 
-        <a href="http://localhost:3030/api/auth/google">Sign up with google</a>
         {isRegistered ? (
           <Spinner />
         ) : (
-          <Button variant="contained" type="submit">
-            Register
-          </Button>
+          <StyledBtn variant="contained" type="submit">
+            Sign UP
+          </StyledBtn>
         )}
       </Form>
-    </Container>
+    </RegisterFormContainer>
   );
 };

@@ -12,7 +12,7 @@ export const Home = () => {
   return (
     <HomeContainer>
       <Slide cascade>
-        <Title>Welcome to ContactBook App</Title>
+        <Title>Welcome to ContactBook</Title>
       </Slide>
       <NavLink to={isLogin}>
         <Fade delay={'200'}>

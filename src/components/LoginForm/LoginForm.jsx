@@ -1,10 +1,11 @@
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
-import { TextField, Button } from '@mui/material';
+import { TextField, Link } from '@mui/material';
 import { logIn } from 'redux/Auth/operation';
-import { Container, Form, Title } from './LoginForm.styled';
+import { Form, Title } from './LoginForm.styled';
 import { useAuth } from 'components/hooks/useAuth';
 import { Spinner } from 'Loader/Loader';
+import { LoginFormContainer, StyledBtn } from './Login.mui.style';
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
@@ -37,9 +38,12 @@ export const LoginForm = () => {
   };
 
   return (
-    <Container>
-      <Title>Sign in</Title>
+    <LoginFormContainer disableGutters maxWidth={false}>
       <Form onSubmit={handleSubmit} autoComplete="off">
+        <Title>Sign in width</Title>
+        <Link href="#" underline="none">
+          GOOGLE
+        </Link>
         <label>
           <TextField
             label="Email"
@@ -69,11 +73,12 @@ export const LoginForm = () => {
         {isRegistered ? (
           <Spinner />
         ) : (
-          <Button variant="contained" type="submit">
+          <StyledBtn variant="contained" type="submit">
             Sign in
-          </Button>
+          </StyledBtn>
         )}
       </Form>
-    </Container>
+      {/* // </div> */}
+    </LoginFormContainer>
   );
 };

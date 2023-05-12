@@ -1,10 +1,12 @@
 import { LoginForm } from 'components/LoginForm/LoginForm';
+import { LoginContainer } from './Login.mui.styled';
 
 export default function Login() {
   return (
-    <div>
-      <title>Login</title>
-      <LoginForm />
-    </div>
+    <section>
+      <LoginContainer disableGutters maxWidth={false}>
+        <LoginForm />
+      </LoginContainer>
+    </section>
   );
 }

@@ -15,7 +15,7 @@ export const AuthNav = () => {
             fontSize: 26,
           }}
         >
-          Register
+          Sign up
         </Typography>
       </NavLink>
       <NavLink to="/login">
@@ -28,7 +28,7 @@ export const AuthNav = () => {
             fontSize: 26,
           }}
         >
-          Log In
+          Sign in
         </Typography>
       </NavLink>
     </Container>

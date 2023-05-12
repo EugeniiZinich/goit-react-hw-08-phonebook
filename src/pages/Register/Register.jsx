@@ -1,10 +1,12 @@
 import { RegisterForm } from 'components/RegisterForm/RegisterForm';
+import { RegisterContainer } from './Register.mui.styled';
 
 export default function Register() {
   return (
-    <div>
-      <title>Registration</title>
-      <RegisterForm />
-    </div>
+    <section>
+      <RegisterContainer>
+        <RegisterForm />
+      </RegisterContainer>
+    </section>
   );
 }
