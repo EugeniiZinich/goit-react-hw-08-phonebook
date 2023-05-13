@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { FilterInput, Container } from './SearchContact.style';
+import { Container } from './SearchContact.style';
+import { StyledTextField } from './SearchContact.mui.styled';
 
 import { filterContact } from 'redux/FilterSlice/filtersSlice';
 
@@ -11,31 +12,25 @@ const SearchContact = () => {
 
   const changeFilter = e => {
     const value = e.currentTarget.value;
-
     setFilter(value);
-
     dispatch(filterContact(value));
   };
 
   return (
     <Container>
-      <h3>Find contacts by name</h3>
       <label>
-        <FilterInput
+        <StyledTextField
+          id="outlined-basic"
+          label="Find contacts by name"
+          variant="outlined"
           type="text"
           name="name"
-          required
           value={filter}
           onChange={changeFilter}
-        ></FilterInput>
+        ></StyledTextField>
       </label>
     </Container>
   );
 };
 
 export default SearchContact;
-
-// SearchContact.propTypes = {
-//   onChange: PropTypes.func.isRequired,
-//   value: PropTypes.string.isRequired,
-// };

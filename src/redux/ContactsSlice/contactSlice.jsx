@@ -19,6 +19,12 @@ const contactSlice = createSlice({
     isLoading: false,
     error: null,
     success: false,
+    location: null,
+  },
+  reducers: {
+    addLocation(state, action) {
+      state.location = action.payload;
+    },
   },
   extraReducers: {
     [fetchContacts.pending]: handlePending,
@@ -56,5 +62,7 @@ const contactSlice = createSlice({
     },
   },
 });
+
+export const { addLocation } = contactSlice.actions;
 
 export const contactReducer = contactSlice.reducer;

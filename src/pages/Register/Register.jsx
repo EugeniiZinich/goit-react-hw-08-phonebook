@@ -4,7 +4,7 @@ import { RegisterContainer } from './Register.mui.styled';
 export default function Register() {
   return (
     <section>
-      <RegisterContainer>
+      <RegisterContainer disableGutters maxWidth={false}>
         <RegisterForm />
       </RegisterContainer>
     </section>
