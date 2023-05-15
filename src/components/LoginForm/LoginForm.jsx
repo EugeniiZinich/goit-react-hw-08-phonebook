@@ -78,7 +78,6 @@ export const LoginForm = () => {
           </StyledBtn>
         )}
       </Form>
-      {/* // </div> */}
     </LoginFormContainer>
   );
 };

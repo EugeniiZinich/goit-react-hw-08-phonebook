@@ -11,10 +11,8 @@ export const StyledTextField = styled(TextField)(() => ({
     color: '#fff',
   },
 
-  '& input': {
-    '&:focus::placeholder': {
-      color: '#fff',
-    },
+  '& .Mui-focused': {
+    color: 'white',
   },
 
   '& fieldset': {

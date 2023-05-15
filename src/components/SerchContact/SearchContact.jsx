@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Container } from './SearchContact.style';
 import { StyledTextField } from './SearchContact.mui.styled';
-
 import { filterContact } from 'redux/FilterSlice/filtersSlice';
 
 const SearchContact = () => {

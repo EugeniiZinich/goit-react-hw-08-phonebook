@@ -8,7 +8,8 @@ export const Navigation = () => {
   const { isLoggedIn } = useAuth();
   const location = useSelector(getLocation);
 
-  const variantColor = location === '/contacts' ? '#fff' : '#1976d2';
+  const variantColor =
+    location === '/contacts' || location === '/addcontact' ? '#fff' : '#1976d2';
 
   return (
     <nav>
