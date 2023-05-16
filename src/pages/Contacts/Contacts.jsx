@@ -6,7 +6,7 @@ import { loadFull } from 'tsparticles';
 import ListContacts from 'components/ListContacts';
 import SearchContact from 'components/SerchContact/SearchContact';
 import { fetchContacts } from 'redux/ContactsSlice/operation';
-import { animateOptions } from 'components/AnimateBack/AnimateBack';
+import { animateOptions } from 'components/AnimateBackOptions/AnimateBackOptions';
 import { addLocation } from 'redux/ContactsSlice/contactSlice';
 
 export default function Contacts() {
