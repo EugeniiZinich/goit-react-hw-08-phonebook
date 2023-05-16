@@ -2,6 +2,10 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   margin-left: auto;
   margin-right: auto;
   left: 0;
@@ -10,7 +14,6 @@ export const Container = styled.div`
   transform: translateY(-50%);
   display: flex;
   text-align: center;
-  flex-direction: column;
 
   max-width: 450px;
   max-height: 600px;
@@ -33,7 +36,6 @@ export const ContactList = styled.ul`
 
 export const ContactCard = styled.li`
   display: flex;
-  align-items: center;
 
   background: linear-gradient(
     3deg,
@@ -41,29 +43,9 @@ export const ContactCard = styled.li`
     rgba(239, 238, 231, 0.6699929971988796) 100%
   );
   border-radius: 20px;
-  text-align: center;
   min-height: 80px;
+
   &:not(:last-child) {
     margin-bottom: 10px;
-  }
-`;
-
-export const DeleteBtn = styled.button`
-  display: flex;
-  align-items: center;
-
-  color: #394497;
-  background-color: transparent;
-  height: 30px;
-  border-radius: 20px;
-  cursor: pointer;
-  font-weight: 900;
-
-  transition: 0.5s;
-  border: none;
-
-  &:hover {
-    box-shadow: none;
-    color: white;
   }
 `;

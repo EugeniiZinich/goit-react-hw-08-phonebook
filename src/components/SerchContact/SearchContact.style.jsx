@@ -21,4 +21,5 @@ export const Container = styled.div`
   justify-content: center;
   flex-direction: column;
   margin-bottom: 25px;
+  margin-top: 20px;
 `;

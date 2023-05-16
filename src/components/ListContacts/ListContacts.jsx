@@ -22,21 +22,19 @@ const ListContacts = ({ children }) => {
   const contact = getFilterContact();
 
   return (
-    <>
-      <Container>
-        {children}
-        <ContactList>
-          {items.length > 0 &&
-            [...contact].reverse().map(({ name, id, number }) => {
-              return (
-                <ContactCard key={id}>
-                  <ContactItem name={name} id={id} number={number} />
-                </ContactCard>
-              );
-            })}
-        </ContactList>
-      </Container>
-    </>
+    <Container>
+      {children}
+      <ContactList>
+        {items.length > 0 &&
+          [...contact].reverse().map(({ name, id, number }) => {
+            return (
+              <ContactCard key={id}>
+                <ContactItem name={name} id={id} number={number} />
+              </ContactCard>
+            );
+          })}
+      </ContactList>
+    </Container>
   );
 };
 

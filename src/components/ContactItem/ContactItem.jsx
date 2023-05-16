@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { DeleteBtn } from 'components/ListContacts/ListContacts.style';
+import { DeleteBtn } from './ContactItem.styled';
 import { deleteContacts } from 'redux/ContactsSlice/operation';
 import { Container, Inner } from './ContactItem.styled';
 
@@ -42,8 +42,8 @@ export const ContactItem = ({ name, id, number }) => {
         <Avatar {...stringAvatar(`${name}`)} />
       </Stack>
       <Inner>
-        <span>{name}: </span>
-        <span>{number}</span>
+        <span>Name: {name} </span>
+        <span>Number: {number}</span>
       </Inner>
 
       <DeleteBtn type="button" onClick={() => dispatch(deleteContacts(id))}>

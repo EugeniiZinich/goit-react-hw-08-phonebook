@@ -8,12 +8,12 @@ import { PrivateRoute } from 'components/PrivateRoute';
 import { useAuth } from 'components/hooks/useAuth';
 import { GlobalStyle } from 'components/GlobalStyle';
 
-const HomePage = lazy(() => import('../../pages/HomePage/HomePage'));
-const ContactPage = lazy(() => import('../../pages/Contacts/Contacts'));
-const RegisterPage = lazy(() => import('../../pages/Register/Register'));
-const LoginPage = lazy(() => import('../../pages/Login/Login'));
-const NotFound = lazy(() => import('../../pages/NotFound/NotFound'));
-const AddContact = lazy(() => import('../../pages/AddContact/AddContact'));
+const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
+const ContactPage = lazy(() => import('../pages/Contacts/Contacts'));
+const RegisterPage = lazy(() => import('../pages/Register/Register'));
+const LoginPage = lazy(() => import('../pages/Login/Login'));
+const NotFound = lazy(() => import('../pages/NotFound/NotFound'));
+const AddContact = lazy(() => import('../pages/AddContact/AddContact'));
 
 export default function App() {
   const dispatch = useDispatch();
