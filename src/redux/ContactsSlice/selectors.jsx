@@ -9,3 +9,5 @@ export const getError = state => state.contacts.error;
 export const getSuccess = state => state.contacts.success;
 
 export const getLocation = state => state.contacts.location;
+
+export const getIsOpen = state => state.contacts.isOpen;

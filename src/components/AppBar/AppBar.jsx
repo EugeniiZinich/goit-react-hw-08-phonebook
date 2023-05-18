@@ -1,27 +1,17 @@
-import { Container, Toolbar } from '@mui/material';
-import { createTheme, ThemeProvider } from '@mui/material';
+import { Container, Toolbar, ThemeProvider } from '@mui/material';
 import { AuthNav } from 'components/AuthNav/AuthNav';
 import { UserMenu } from 'components/UserMenu/UserMenu';
 import { useAuth } from 'components/hooks/useAuth';
 import { Navigation } from 'components/Navigation/Navigation';
 import { AppBarContainer } from './AppBar.mui.style';
-
-const theme = createTheme({
-  breakpoints: {
-    values: {
-      mobile: 320,
-      tablet: 768,
-      laptop: 1024,
-      desktop: 1200,
-    },
-  },
-});
+import { theme } from 'breakpoints/breakpoints';
 
 export const NavBar = () => {
   const { isLoggedIn } = useAuth();
+
   return (
-    <ThemeProvider theme={theme}>
-      <Container disableGutters maxWidth={false}>
+    <Container disableGutters maxWidth={false}>
+      <ThemeProvider theme={theme}>
         <AppBarContainer position="absolute">
           <Toolbar
             variant="dense"
@@ -34,7 +24,7 @@ export const NavBar = () => {
             {isLoggedIn ? <UserMenu /> : <AuthNav />}
           </Toolbar>
         </AppBarContainer>
-      </Container>
-    </ThemeProvider>
+      </ThemeProvider>
+    </Container>
   );
 };

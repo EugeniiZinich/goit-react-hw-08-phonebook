@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { Button } from '@mui/material';
+// import { Button } from '@mui/material';
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
 import LogoutIcon from '@mui/icons-material/Logout';
@@ -42,9 +42,14 @@ export const UserMenu = () => {
         </StyledBadge>
       </Stack>
 
-      <Button type="button" onClick={() => dispatch(logOut())}>
-        <LogoutIcon />
-      </Button>
+      {/* <Button type="button"> */}
+      <LogoutIcon
+        onClick={() => dispatch(logOut())}
+        sx={{
+          cursor: 'pointer',
+        }}
+      />
+      {/* </Button> */}
     </Container>
   );
 };

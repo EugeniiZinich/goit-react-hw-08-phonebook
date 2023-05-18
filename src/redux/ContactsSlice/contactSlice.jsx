@@ -20,10 +20,14 @@ const contactSlice = createSlice({
     error: null,
     success: false,
     location: null,
+    isOpen: '',
   },
   reducers: {
     addLocation(state, action) {
       state.location = action.payload;
+    },
+    isOpenMenu(state, action) {
+      state.isOpen = action.payload;
     },
   },
   extraReducers: {
@@ -63,6 +67,6 @@ const contactSlice = createSlice({
   },
 });
 
-export const { addLocation } = contactSlice.actions;
+export const { addLocation, isOpenMenu } = contactSlice.actions;
 
 export const contactReducer = contactSlice.reducer;

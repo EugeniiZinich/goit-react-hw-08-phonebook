@@ -7,13 +7,16 @@ import { animateOptions } from 'components/AnimateBackOptions/AnimateBackOptions
 import { addLocation } from 'redux/ContactsSlice/contactSlice';
 import { AddContactForm } from 'components/AddContactForm/AddContactForm';
 import { AddContactContainer } from './AddContact.mui.styled';
+import { useEffect } from 'react';
 
 const AddContact = () => {
   const dispatch = useDispatch();
 
   const location = useLocation();
 
-  dispatch(addLocation(location.pathname));
+  useEffect(() => {
+    dispatch(addLocation(location.pathname));
+  }, [dispatch, location.pathname]);
 
   const particlesInit = useCallback(async engine => {
     await loadFull(engine);

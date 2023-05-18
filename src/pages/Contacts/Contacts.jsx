@@ -13,7 +13,9 @@ export default function Contacts() {
   const dispatch = useDispatch();
   const location = useLocation();
 
-  dispatch(addLocation(location.pathname));
+  useEffect(() => {
+    dispatch(addLocation(location.pathname));
+  }, [dispatch, location.pathname]);
 
   useEffect(() => {
     dispatch(fetchContacts());
