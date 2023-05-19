@@ -4,7 +4,7 @@ import { TextField } from '@mui/material';
 import { register } from 'redux/Auth/operation';
 import { Form, Title } from './RegisterForm.styled';
 import { useAuth } from 'components/hooks/useAuth';
-import { Spinner } from 'Loader/Loader';
+import { Spinner } from 'components/Loader/Loader';
 import { RegisterFormContainer, StyledBtn } from './RegisterForm.mui.style';
 
 export const RegisterForm = () => {

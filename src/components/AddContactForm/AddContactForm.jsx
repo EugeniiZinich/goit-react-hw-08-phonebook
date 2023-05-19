@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import toast from 'react-hot-toast';
-import { Loader } from 'Loader/Loader';
+import { Loader } from 'components/Loader/Loader';
 import { useContact } from 'components/hooks/useContact';
 import { getContacts } from 'redux/ContactsSlice/selectors';
 import { addContact } from 'redux/ContactsSlice/operation';

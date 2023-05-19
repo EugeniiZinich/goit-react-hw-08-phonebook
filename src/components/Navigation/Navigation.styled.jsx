@@ -46,7 +46,4 @@ export const StyledLink = styled(NavLink)`
       transform: scaleX(1);
     }
   }
-
-  @media (min-width: 320px) and (max-width: 769px) {
-  }
 `;

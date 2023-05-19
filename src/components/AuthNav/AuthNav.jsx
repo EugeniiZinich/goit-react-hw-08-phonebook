@@ -1,11 +1,16 @@
 import { Typography } from '@mui/material';
-import { NavLink } from 'react-router-dom';
-import { Container } from './AuthNav.styled';
+import { useSelector } from 'react-redux';
+import { Container, StyledLink } from './AuthNav.styled';
+import { getLocation } from 'redux/ContactsSlice/selectors';
 
 export const AuthNav = () => {
+  const location = useSelector(getLocation);
+  const variantColor =
+    location === '/contacts' || location === '/addcontact' ? '#fff' : '#1976d2';
+
   return (
     <Container>
-      <NavLink to="/register" sx={{}}>
+      <StyledLink to="/register" variantColor={variantColor}>
         <Typography
           sx={{
             fontFamily: 'Dancing Script cursive',
@@ -13,13 +18,13 @@ export const AuthNav = () => {
             color: '#1976d2',
             display: 'block',
             fontWeight: 'bold',
-            fontSize: 26,
+            fontSize: 20,
           }}
         >
           Sign up
         </Typography>
-      </NavLink>
-      <NavLink to="/login">
+      </StyledLink>
+      <StyledLink to="/login" variantColor={variantColor}>
         <Typography
           sx={{
             fontFamily: 'Dancing Script cursive',
@@ -27,12 +32,12 @@ export const AuthNav = () => {
             color: '#1976d2',
             display: 'block',
             fontWeight: 'bold',
-            fontSize: 26,
+            fontSize: 20,
           }}
         >
           Sign in
         </Typography>
-      </NavLink>
+      </StyledLink>
     </Container>
   );
 };

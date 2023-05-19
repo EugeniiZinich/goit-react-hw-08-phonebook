@@ -4,7 +4,7 @@ import { TextField, Link } from '@mui/material';
 import { logIn } from 'redux/Auth/operation';
 import { Form, Title } from './LoginForm.styled';
 import { useAuth } from 'components/hooks/useAuth';
-import { Spinner } from 'Loader/Loader';
+import { Spinner } from 'components/Loader/Loader';
 import { LoginFormContainer, StyledBtn } from './Login.mui.style';
 
 export const LoginForm = () => {
