@@ -4,7 +4,7 @@ import { UserMenu } from 'components/UserMenu/UserMenu';
 import { useAuth } from 'components/hooks/useAuth';
 import { Navigation } from 'components/Navigation/Navigation';
 import { AppBarContainer } from './AppBar.mui.style';
-import { theme } from 'breakpoints/breakpoints';
+import { theme } from 'config/breakpoints/breakpoints';
 
 export const NavBar = () => {
   const { isLoggedIn } = useAuth();

@@ -51,7 +51,7 @@ export const AddContactForm = () => {
   };
   return (
     <Form onSubmit={formSubmit}>
-      <h2 style={{ padding: '0 0 10px', color: '#fff' }}>Add yours contact</h2>
+      <h2 style={{ padding: '0 0 10px', color: '#fff' }}>Create contact</h2>
       <label>
         <StyledTextField
           type="text"

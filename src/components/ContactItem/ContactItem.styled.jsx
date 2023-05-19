@@ -13,22 +13,25 @@ export const Inner = styled.div`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  max-width: 450px;
 
-  /* width: 200px;
-  height: 100px; */
-  max-width: 250px;
-  /* background-color: red; */
+  & > span {
+    font-family: 'Dancing Script', cursive;
+  }
 
-  /* & span {
-    padding-right: 5px;
-  } */
+  @media (min-width: 320px) and (max-width: 769px) {
+    & > span {
+      font-size: 16px;
+    }
+  }
 `;
 
 export const DeleteBtn = styled.button`
   display: flex;
   align-items: center;
 
-  color: #394497;
+  /* color: #394497; */
+  color: #fff;
   background-color: transparent;
   height: 30px;
   border-radius: 20px;

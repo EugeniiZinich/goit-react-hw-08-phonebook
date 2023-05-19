@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from 'react-redux';
-// import { Button } from '@mui/material';
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
 import LogoutIcon from '@mui/icons-material/Logout';
@@ -21,6 +20,7 @@ export const UserMenu = () => {
     <Container>
       <span
         style={{
+          fontFamily: 'Dancing Script',
           display: 'block',
           fontWeight: 'bold',
           fontSize: 20,
@@ -42,14 +42,13 @@ export const UserMenu = () => {
         </StyledBadge>
       </Stack>
 
-      {/* <Button type="button"> */}
       <LogoutIcon
         onClick={() => dispatch(logOut())}
         sx={{
           cursor: 'pointer',
+          color: variantColor,
         }}
       />
-      {/* </Button> */}
     </Container>
   );
 };

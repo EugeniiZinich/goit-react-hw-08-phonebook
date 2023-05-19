@@ -8,6 +8,7 @@ export const AuthNav = () => {
       <NavLink to="/register" sx={{}}>
         <Typography
           sx={{
+            fontFamily: 'Dancing Script cursive',
             my: 2,
             color: '#1976d2',
             display: 'block',
@@ -21,6 +22,7 @@ export const AuthNav = () => {
       <NavLink to="/login">
         <Typography
           sx={{
+            fontFamily: 'Dancing Script cursive',
             my: 2,
             color: '#1976d2',
             display: 'block',

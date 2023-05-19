@@ -15,8 +15,12 @@ export const Container = styled.div`
   display: flex;
   text-align: center;
 
-  max-width: 450px;
-  max-height: 600px;
+  max-width: 550px;
+  max-height: 700px;
+
+  @media (min-width: 320px) and (max-width: 769) {
+    max-width: 350px;
+  }
 `;
 
 export const ContactList = styled.ul`

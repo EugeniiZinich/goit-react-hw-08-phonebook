@@ -7,10 +7,7 @@ export const Container = styled.div`
   flex-direction: column;
   margin-bottom: 25px;
 
-  @media (min-width: 768px) {
-    margin-top: 60px;
-  }
-  @media (max-width: 768px) {
-    margin-top: 60px;
+  @media (min-width: 320px) {
+    margin-top: 100px;
   }
 `;

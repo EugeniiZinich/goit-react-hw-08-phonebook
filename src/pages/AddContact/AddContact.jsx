@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import Particles from 'react-particles';
 import { loadFull } from 'tsparticles';
-import { animateOptions } from 'components/AnimateBackOptions/AnimateBackOptions';
+import { animateOptions } from 'config/AnimateBackOptions/AnimateBackOptions';
 import { addLocation } from 'redux/ContactsSlice/contactSlice';
 import { AddContactForm } from 'components/AddContactForm/AddContactForm';
 import { AddContactContainer } from './AddContact.mui.styled';
