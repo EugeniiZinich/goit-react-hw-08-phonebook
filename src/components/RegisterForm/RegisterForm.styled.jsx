@@ -19,6 +19,6 @@ export const Form = styled.form`
   padding: 20px 40px;
 `;
 
-export const Title = styled.h1`
+export const Title = styled.h2`
   color: black;
 `;

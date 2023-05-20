@@ -26,7 +26,7 @@ export const Navigation = () => {
             <StyledLink
               to="/"
               onClick={() => dispatch(isOpenMenu(false))}
-              variantColor={variantColor}
+              variantсolor={variantColor}
             >
               <Typography
                 sx={{
@@ -46,7 +46,7 @@ export const Navigation = () => {
                 <StyledLink
                   to="/contacts"
                   onClick={() => dispatch(isOpenMenu(false))}
-                  variantColor={variantColor}
+                  variantсolor={variantColor}
                 >
                   <Typography
                     sx={{
@@ -64,7 +64,7 @@ export const Navigation = () => {
                 <StyledLink
                   to="/addcontact"
                   onClick={() => dispatch(isOpenMenu(false))}
-                  variantColor={variantColor}
+                  variantсolor={variantColor}
                 >
                   <Typography
                     sx={{

@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Container, Button } from '@mui/material';
+import { Container, Button, TextField } from '@mui/material';
 
 export const RegisterFormContainer = styled(Container)(() => ({
   display: 'flex',
@@ -48,5 +48,15 @@ export const StyledBtn = styled(Button)(() => ({
   },
   '&:hover::before ': {
     width: '100%',
+  },
+}));
+
+export const StyledTextField = styled(TextField)(() => ({
+  '& .MuiInputBase-root': {
+    height: '40px',
+  },
+
+  '& .MuiFormLabel-root': {
+    top: '-7px',
   },
 }));

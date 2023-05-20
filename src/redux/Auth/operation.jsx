@@ -1,7 +1,9 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
+const contactApi = axios.create({
+  baseURL: 'https://contacts-04gv.onrender.com/',
+});
 
 const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -15,9 +17,10 @@ export const register = createAsyncThunk(
   'auth/register',
   async (arg, { rejectWithValue }) => {
     try {
-      const { data } = await axios.post('/users/signup', arg);
+      const { data } = await contactApi.post('api/auth/register', arg);
 
       setAuthHeader(data.token);
+
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -29,7 +32,7 @@ export const logIn = createAsyncThunk(
   'auth/login',
   async (arg, { rejectWithValue }) => {
     try {
-      const { data } = await axios.post('/users/login', arg);
+      const { data } = await contactApi.post('api/auth/login', arg);
       setAuthHeader(data.token);
       return data;
     } catch (error) {
@@ -42,7 +45,7 @@ export const logOut = createAsyncThunk(
   'auth/logout',
   async (_, { rejectWithValue }) => {
     try {
-      await axios.post('/users/logout');
+      await axios.post('https://contacts-04gv.onrender.com/api/auth/logout');
       ClearAuthHeader();
     } catch (error) {
       return rejectWithValue(error.message);
@@ -62,7 +65,9 @@ export const fetchCurrentUser = createAsyncThunk(
 
     try {
       setAuthHeader(persistedToken);
-      const { data } = await axios.get('/users/current');
+      const { data } = await axios.get(
+        'https://contacts-04gv.onrender.com/api/auth/current'
+      );
 
       return data;
     } catch (error) {
