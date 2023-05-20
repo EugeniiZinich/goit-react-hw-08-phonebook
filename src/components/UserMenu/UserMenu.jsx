@@ -35,10 +35,7 @@ export const UserMenu = () => {
           anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
           variant="dot"
         >
-          <Avatar
-            alt={user.name}
-            src="https://res.cloudinary.com/dzqzq9kcl/image/upload/v1681319550/avatars/esil2u7j3s3l35zabps2.jpg"
-          />
+          <Avatar alt={user.name} src={user.avatarURL} />
         </StyledBadge>
       </Stack>
 

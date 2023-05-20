@@ -1,17 +1,23 @@
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
-import { TextField } from '@mui/material';
 import { register } from 'redux/Auth/operation';
 import { Form, Title } from './RegisterForm.styled';
 import { useAuth } from 'components/hooks/useAuth';
 import { Spinner } from 'components/Loader/Loader';
-import { RegisterFormContainer, StyledBtn } from './RegisterForm.mui.style';
+import {
+  RegisterFormContainer,
+  StyledBtn,
+  StyledTextField,
+} from './RegisterForm.mui.style';
+import { SubscriptionRadio } from 'components/SubscriptionRadio/SubscriptionRadio';
+import googleImg from '../../img/IOS_Google_icon.png';
 
 export const RegisterForm = () => {
   const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [subscription, setSubscription] = useState('');
   const { isRegistered } = useAuth();
 
   const handleChange = ({ target: { name, value } }) => {
@@ -35,6 +41,7 @@ export const RegisterForm = () => {
         name: form.elements.name.value,
         email: form.elements.email.value,
         password: form.elements.password.value,
+        subscription,
       })
     );
     form.reset();
@@ -44,9 +51,18 @@ export const RegisterForm = () => {
     <RegisterFormContainer>
       <Form onSubmit={handleSubmit} autoComplete="off">
         <Title>Sign UP width</Title>
-        <a href="http://localhost:3030/api/auth/google">GOOGLE</a>
+        <a href="http://localhost:3030/api/auth/google">
+          <img
+            src={googleImg}
+            style={{
+              height: 50,
+            }}
+            alt="google-registration-icon"
+          />
+        </a>
+
         <label>
-          <TextField
+          <StyledTextField
             id="outlined-basic"
             label="Name"
             variant="outlined"
@@ -59,7 +75,7 @@ export const RegisterForm = () => {
           />
         </label>
         <label>
-          <TextField
+          <StyledTextField
             label="Email"
             variant="outlined"
             required
@@ -71,19 +87,20 @@ export const RegisterForm = () => {
           />
         </label>
         <label>
-          <TextField
+          <StyledTextField
             label="Password"
             variant="outlined"
             required
             type="password"
             name="password"
-            minlength="8"
-            maxlength="20"
+            minLength="8"
+            maxLength="20"
             value={password}
             onChange={handleChange}
             sx={{ width: '305px' }}
           />
         </label>
+        <SubscriptionRadio subscription={setSubscription} />
 
         {isRegistered ? (
           <Spinner />

@@ -10,7 +10,7 @@ export const AuthNav = () => {
 
   return (
     <Container>
-      <StyledLink to="/register" variantColor={variantColor}>
+      <StyledLink to="/register" variantсolor={variantColor}>
         <Typography
           sx={{
             fontFamily: 'Dancing Script cursive',
@@ -24,7 +24,7 @@ export const AuthNav = () => {
           Sign up
         </Typography>
       </StyledLink>
-      <StyledLink to="/login" variantColor={variantColor}>
+      <StyledLink to="/login" variantсolor={variantColor}>
         <Typography
           sx={{
             fontFamily: 'Dancing Script cursive',

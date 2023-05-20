@@ -15,7 +15,7 @@ export const StyledLink = styled(NavLink)`
     position: absolute;
     width: 100%;
     height: 2px;
-    background-color: ${({ variantColor }) => variantColor};
+    background-color: ${({ variantсolor }) => variantсolor};
     transform: scaleX(0);
     transition: transform 0.25s;
   }

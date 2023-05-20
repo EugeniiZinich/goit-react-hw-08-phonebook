@@ -6,6 +6,7 @@ import { Form, Title } from './LoginForm.styled';
 import { useAuth } from 'components/hooks/useAuth';
 import { Spinner } from 'components/Loader/Loader';
 import { LoginFormContainer, StyledBtn } from './Login.mui.style';
+import googleImg from '../../img/IOS_Google_icon.png';
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
@@ -41,8 +42,14 @@ export const LoginForm = () => {
     <LoginFormContainer disableGutters maxWidth={false}>
       <Form onSubmit={handleSubmit} autoComplete="off">
         <Title>Sign in width</Title>
-        <Link href="#" underline="none">
-          GOOGLE
+        <Link href="http://localhost:3030/api/auth/google">
+          <img
+            src={googleImg}
+            style={{
+              height: 50,
+            }}
+            alt="google-registration-icon"
+          />
         </Link>
         <label>
           <TextField
@@ -62,8 +69,8 @@ export const LoginForm = () => {
             name="password"
             required
             label="Password"
-            minlength="8"
-            maxlength="20"
+            minLength="8"
+            maxLength="20"
             variant="outlined"
             sx={{ width: '25ch' }}
             value={password}
