@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
 import LogoutIcon from '@mui/icons-material/Logout';
-import { logOut } from 'redux/Auth/operation';
+import { logOut } from 'redux/Auth/authOperation';
 import { useAuth } from 'components/hooks/useAuth';
 import { Container } from './UserMenu.styled';
 import { StyledBadge } from './UserMenu.mui.styled';
@@ -12,6 +12,8 @@ export const UserMenu = () => {
   const dispatch = useDispatch();
   const location = useSelector(getLocation);
   const { user } = useAuth();
+
+  console.log(user);
 
   const variantColor =
     location === '/contacts' || location === '/addcontact' ? '#fff' : '#1976d2';
@@ -27,7 +29,7 @@ export const UserMenu = () => {
           color: variantColor,
         }}
       >
-        {user.name}
+        {user?.name}
       </span>
       <Stack direction="row" spacing={2}>
         <StyledBadge
@@ -35,7 +37,7 @@ export const UserMenu = () => {
           anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
           variant="dot"
         >
-          <Avatar alt={user.name} src={user.avatarURL} />
+          <Avatar alt={user?.name} src={user?.avatarURL} />
         </StyledBadge>
       </Stack>
 

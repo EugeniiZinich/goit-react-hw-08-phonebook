@@ -1,12 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { register, logIn, logOut, fetchCurrentUser } from './operation';
+import { register, logIn, logOut, fetchCurrentUser } from './authOperation';
 
 const handlePending = state => {
-  state.isRegistered = true;
+  state.isRefreshing = true;
 };
 
-const handleRejected = (state, action) => {
-  state.isRegistered = false;
+const handleRejected = state => {
+  state.isRefreshing = false;
 };
 
 const initialState = {
@@ -15,19 +15,25 @@ const initialState = {
   isLoggedIn: false,
   isRefreshing: false,
   error: null,
-  isRegistered: false,
+  // isRefreshed: false,
 };
 
 const authSlice = createSlice({
   name: 'auth',
   initialState,
+  reducers: {
+    updateToken(state, payload) {
+      state.token = payload.action;
+      state.isLoggedIn = true;
+    },
+  },
   extraReducers: {
     [register.pending]: handlePending,
     [register.fulfilled](state, action) {
       state.user = action.payload;
       state.token = action.payload.token;
       state.isLoggedIn = true;
-      state.isRegistered = false;
+      state.isRefreshing = false;
     },
     [register.rejected]: handleRejected,
 
@@ -43,21 +49,19 @@ const authSlice = createSlice({
       state.user = { name: null, email: null };
       state.token = null;
       state.isLoggedIn = false;
-      state.isRegistered = false;
+      state.isRefreshing = false;
     },
 
-    [fetchCurrentUser.pending](state) {
-      state.isRefreshing = true;
-    },
-    [fetchCurrentUser.fulfilled](state, action) {
-      state.user = action.payload;
+    [fetchCurrentUser.pending]: handlePending,
+    [fetchCurrentUser.fulfilled](state, { payload }) {
+      console.log('Slice :', 'fetchCurrentUser');
+      state.user = payload.user;
       state.isLoggedIn = true;
       state.isRefreshing = false;
     },
-    [fetchCurrentUser.rejected](state) {
-      state.isRefreshing = false;
-    },
+    [fetchCurrentUser.rejected]: handleRejected,
   },
 });
 
+export const { updateToken } = authSlice.actions;
 export const authReducer = authSlice.reducer;

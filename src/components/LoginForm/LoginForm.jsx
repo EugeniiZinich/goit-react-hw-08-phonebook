@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { TextField, Link } from '@mui/material';
-import { logIn } from 'redux/Auth/operation';
+import { logIn } from 'redux/Auth/authOperation';
 import { Form, Title } from './LoginForm.styled';
 import { useAuth } from 'components/hooks/useAuth';
 import { Spinner } from 'components/Loader/Loader';

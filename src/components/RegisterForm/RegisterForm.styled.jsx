@@ -6,7 +6,7 @@ export const Form = styled.form`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 15px;
   background: rgba(255, 255, 255, 0.25);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(4px);
@@ -21,4 +21,5 @@ export const Form = styled.form`
 
 export const Title = styled.h2`
   color: black;
+  font-size: 25px;
 `;

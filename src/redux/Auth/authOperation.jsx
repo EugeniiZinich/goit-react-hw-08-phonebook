@@ -5,7 +5,8 @@ const contactApi = axios.create({
   baseURL: 'https://contacts-04gv.onrender.com/',
 });
 
-const setAuthHeader = token => {
+export const setAuthHeader = token => {
+  if (token === undefined) return;
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
@@ -63,11 +64,18 @@ export const fetchCurrentUser = createAsyncThunk(
       return rejectWithValue('Unable to fetch user');
     }
 
+    console.log('fetchCurrentUser');
+
     try {
       setAuthHeader(persistedToken);
+      // const { data } = await axios.get(
+      //   'https://contacts-04gv.onrender.com/api/auth/current'
+      // );
       const { data } = await axios.get(
-        'https://contacts-04gv.onrender.com/api/auth/current'
+        'http://localhost:3030/api/auth/current'
       );
+
+      console.log(data);
 
       return data;
     } catch (error) {
