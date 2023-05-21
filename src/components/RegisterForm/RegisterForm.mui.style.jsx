@@ -6,6 +6,7 @@ export const RegisterFormContainer = styled(Container)(() => ({
   justifyContent: 'center',
   alignItems: 'center',
   flexDirection: 'column',
+  gap: 5,
   height: '100%',
 }));
 

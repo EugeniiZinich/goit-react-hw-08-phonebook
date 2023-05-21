@@ -2,7 +2,7 @@ import { useEffect, lazy } from 'react';
 import { useDispatch } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from 'components/Layout';
-import { fetchCurrentUser } from 'redux/Auth/operation';
+import { fetchCurrentUser } from 'redux/Auth/authOperation';
 import { RestrictedRoute } from 'components/RestrictedRoute';
 import { PrivateRoute } from 'components/PrivateRoute';
 import { useAuth } from 'components/hooks/useAuth';
@@ -20,7 +20,10 @@ export default function App() {
 
   const { isRefreshing } = useAuth;
 
+  console.log(isRefreshing);
+
   useEffect(() => {
+    console.log('App');
     dispatch(fetchCurrentUser());
   }, [dispatch]);
 

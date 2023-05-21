@@ -21,4 +21,5 @@ export const Form = styled.form`
 
 export const Title = styled.h1`
   color: black;
+  font-size: 27px;
 `;

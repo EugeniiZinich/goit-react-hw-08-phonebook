@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
-import { register } from 'redux/Auth/operation';
+import { register } from 'redux/Auth/authOperation';
 import { Form, Title } from './RegisterForm.styled';
 import { useAuth } from 'components/hooks/useAuth';
 import { Spinner } from 'components/Loader/Loader';
@@ -51,7 +51,7 @@ export const RegisterForm = () => {
     <RegisterFormContainer>
       <Form onSubmit={handleSubmit} autoComplete="off">
         <Title>Sign UP width</Title>
-        <a href="http://localhost:3030/api/auth/google">
+        <a href="https://contacts-04gv.onrender.com/api/auth/google">
           <img
             src={googleImg}
             style={{
