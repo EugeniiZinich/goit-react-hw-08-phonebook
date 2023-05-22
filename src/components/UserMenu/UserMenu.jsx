@@ -13,8 +13,6 @@ export const UserMenu = () => {
   const location = useSelector(getLocation);
   const { user } = useAuth();
 
-  console.log(user);
-
   const variantColor =
     location === '/contacts' || location === '/addcontact' ? '#fff' : '#1976d2';
 

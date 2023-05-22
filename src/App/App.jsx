@@ -23,7 +23,6 @@ export default function App() {
   console.log(isRefreshing);
 
   useEffect(() => {
-    console.log('App');
     dispatch(fetchCurrentUser());
   }, [dispatch]);
 

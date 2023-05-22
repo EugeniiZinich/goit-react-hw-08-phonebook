@@ -23,10 +23,6 @@ export default function HomePage() {
     }
   }, [dispatch]);
 
-  // useEffect(() => {
-  //   dispatch(fetchCurrentUser());
-  // }, [dispatch]);
-
   useEffect(() => {
     dispatch(addLocation(location.pathname));
   }, [dispatch, location.pathname]);

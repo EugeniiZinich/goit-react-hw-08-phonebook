@@ -42,7 +42,7 @@ export const LoginForm = () => {
     <LoginFormContainer disableGutters maxWidth={false}>
       <Form onSubmit={handleSubmit} autoComplete="off">
         <Title>Sign in width</Title>
-        <Link href="http://localhost:3030/api/auth/google">
+        <Link href="https://contacts-04gv.onrender.com/api/auth/google">
           <img
             src={googleImg}
             style={{

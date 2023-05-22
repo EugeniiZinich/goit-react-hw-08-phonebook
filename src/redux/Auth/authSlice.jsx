@@ -15,15 +15,14 @@ const initialState = {
   isLoggedIn: false,
   isRefreshing: false,
   error: null,
-  // isRefreshed: false,
 };
 
 const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    updateToken(state, payload) {
-      state.token = payload.action;
+    updateToken(state, { payload }) {
+      state.token = payload;
       state.isLoggedIn = true;
     },
   },
@@ -53,9 +52,8 @@ const authSlice = createSlice({
     },
 
     [fetchCurrentUser.pending]: handlePending,
-    [fetchCurrentUser.fulfilled](state, { payload }) {
-      console.log('Slice :', 'fetchCurrentUser');
-      state.user = payload.user;
+    [fetchCurrentUser.fulfilled](state, action) {
+      state.user = action.payload;
       state.isLoggedIn = true;
       state.isRefreshing = false;
     },

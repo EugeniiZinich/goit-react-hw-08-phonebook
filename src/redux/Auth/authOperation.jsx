@@ -58,8 +58,9 @@ export const fetchCurrentUser = createAsyncThunk(
   'auth/refresh',
   async (_, { getState, rejectWithValue }) => {
     const state = getState();
+    console.log(state);
     const persistedToken = state.auth.token;
-
+    console.log(persistedToken);
     if (persistedToken === null) {
       return rejectWithValue('Unable to fetch user');
     }
@@ -68,16 +69,11 @@ export const fetchCurrentUser = createAsyncThunk(
 
     try {
       setAuthHeader(persistedToken);
-      // const { data } = await axios.get(
-      //   'https://contacts-04gv.onrender.com/api/auth/current'
-      // );
       const { data } = await axios.get(
-        'http://localhost:3030/api/auth/current'
+        'https://contacts-04gv.onrender.com/api/auth/current'
       );
 
-      console.log(data);
-
-      return data;
+      return data.user;
     } catch (error) {
       return rejectWithValue(error.message);
     }
