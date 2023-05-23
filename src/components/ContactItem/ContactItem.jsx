@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
 import DeleteIcon from '@mui/icons-material/Delete';
-
 import { DeleteBtn } from './ContactItem.styled';
 import { deleteContacts } from 'redux/ContactsSlice/contactOperation';
 import { Container, Inner } from './ContactItem.styled';

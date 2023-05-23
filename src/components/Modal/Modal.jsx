@@ -17,6 +17,7 @@ import {
 import { StyledBtn } from 'components/LoginForm/Login.mui.style';
 import { Form } from 'components/LoginForm/LoginForm.styled';
 import { StyledTextField } from 'components/SerchContact/SearchContact.mui.styled';
+import { StyledCloseBtn } from './Modal.mui.styled';
 
 const style = {
   position: 'absolute',
@@ -77,7 +78,12 @@ export const ModalEdit = ({ id, name, phone }) => {
 
   return (
     <div>
-      <Button onClick={() => setOpen(!open)}>
+      <Button
+        onClick={() => setOpen(!open)}
+        sx={{
+          minWidth: '40px',
+        }}
+      >
         <AutoFixHighIcon />
       </Button>
       <Modal
@@ -88,23 +94,9 @@ export const ModalEdit = ({ id, name, phone }) => {
       >
         <Box sx={style}>
           <Form onSubmit={formSubmit}>
-            <Button
-              sx={{
-                position: 'absolute',
-                top: 0,
-                right: 0,
-                minWidth: 45,
-              }}
-            >
-              <CloseIcon
-                onClick={() => setOpen(!open)}
-                sx={{
-                  color: '#fff',
-                  width: 25,
-                  height: 40,
-                }}
-              />
-            </Button>
+            <StyledCloseBtn>
+              <CloseIcon onClick={() => setOpen(!open)} />
+            </StyledCloseBtn>
             <h2 style={{ padding: '0 0 10px', color: '#fff' }}>Edit contact</h2>
             <label>
               <StyledTextField
