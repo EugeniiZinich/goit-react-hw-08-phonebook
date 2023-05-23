@@ -3,9 +3,11 @@ import PropTypes from 'prop-types';
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
 import DeleteIcon from '@mui/icons-material/Delete';
+
 import { DeleteBtn } from './ContactItem.styled';
 import { deleteContacts } from 'redux/ContactsSlice/contactOperation';
 import { Container, Inner } from './ContactItem.styled';
+import { ModalEdit } from 'components/Modal/Modal';
 
 export const ContactItem = ({ name, id, phone }) => {
   const stringToColor = string => {
@@ -46,9 +48,12 @@ export const ContactItem = ({ name, id, phone }) => {
         <span>Number: {phone}</span>
       </Inner>
 
-      <DeleteBtn type="button" onClick={() => dispatch(deleteContacts(id))}>
-        <DeleteIcon />
-      </DeleteBtn>
+      <div>
+        <ModalEdit id={id} name={name} phone={phone} />
+        <DeleteBtn type="button" onClick={() => dispatch(deleteContacts(id))}>
+          <DeleteIcon />
+        </DeleteBtn>
+      </div>
     </Container>
   );
 };
