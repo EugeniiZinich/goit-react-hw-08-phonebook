@@ -30,7 +30,6 @@ export const DeleteBtn = styled.button`
   display: flex;
   align-items: center;
 
-  /* color: #394497; */
   color: #fff;
   background-color: transparent;
   height: 30px;

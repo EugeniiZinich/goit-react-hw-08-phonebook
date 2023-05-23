@@ -46,8 +46,6 @@ export const AddContactForm = () => {
       return;
     }
 
-    // dispatch(addContact({ name, phone }));
-
     dispatch(addContact(contact))
       .then(unwrapResult)
       .then(response => {
