@@ -4,10 +4,10 @@ import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { DeleteBtn } from './ContactItem.styled';
-import { deleteContacts } from 'redux/ContactsSlice/operation';
+import { deleteContacts } from 'redux/ContactsSlice/contactOperation';
 import { Container, Inner } from './ContactItem.styled';
 
-export const ContactItem = ({ name, id, number }) => {
+export const ContactItem = ({ name, id, phone }) => {
   const stringToColor = string => {
     let hash = 0;
     let i;
@@ -43,7 +43,7 @@ export const ContactItem = ({ name, id, number }) => {
       </Stack>
       <Inner>
         <span>Name: {name} </span>
-        <span>Number: {number}</span>
+        <span>Number: {phone}</span>
       </Inner>
 
       <DeleteBtn type="button" onClick={() => dispatch(deleteContacts(id))}>
@@ -56,5 +56,5 @@ export const ContactItem = ({ name, id, number }) => {
 ContactItem.propTypes = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  number: PropTypes.string.isRequired,
+  phone: PropTypes.string.isRequired,
 };

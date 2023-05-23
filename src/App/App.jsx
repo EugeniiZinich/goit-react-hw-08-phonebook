@@ -20,8 +20,6 @@ export default function App() {
 
   const { isRefreshing } = useAuth;
 
-  console.log(isRefreshing);
-
   useEffect(() => {
     dispatch(fetchCurrentUser());
   }, [dispatch]);

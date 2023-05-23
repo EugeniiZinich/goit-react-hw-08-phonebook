@@ -5,7 +5,7 @@ import Particles from 'react-particles';
 import { loadFull } from 'tsparticles';
 import ListContacts from 'components/ListContacts';
 import SearchContact from 'components/SerchContact/SearchContact';
-import { fetchContacts } from 'redux/ContactsSlice/operation';
+import { fetchContacts } from 'redux/ContactsSlice/contactOperation';
 import { animateOptions } from 'config/AnimateBackOptions/AnimateBackOptions';
 import { addLocation } from 'redux/ContactsSlice/contactSlice';
 

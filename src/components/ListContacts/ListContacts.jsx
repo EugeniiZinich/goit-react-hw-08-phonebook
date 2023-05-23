@@ -25,11 +25,11 @@ const ListContacts = ({ children }) => {
     <Container>
       {children}
       <ContactList>
-        {items.length > 0 &&
-          [...contact].reverse().map(({ name, id, number }) => {
+        {items?.length > 0 &&
+          [...contact].reverse().map(({ name, _id, phone }) => {
             return (
-              <ContactCard key={id}>
-                <ContactItem name={name} id={id} number={number} />
+              <ContactCard key={_id}>
+                <ContactItem name={name} id={_id} phone={phone} />
               </ContactCard>
             );
           })}

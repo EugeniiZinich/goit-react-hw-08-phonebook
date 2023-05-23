@@ -1,11 +1,10 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-const contactApi = axios.create({
-  baseURL: 'https://contacts-04gv.onrender.com/',
-});
+axios.defaults.baseURL = 'https://contacts-04gv.onrender.com';
 
 export const setAuthHeader = token => {
+  console.log(token);
   if (token === undefined) return;
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
@@ -18,7 +17,7 @@ export const register = createAsyncThunk(
   'auth/register',
   async (arg, { rejectWithValue }) => {
     try {
-      const { data } = await contactApi.post('api/auth/register', arg);
+      const { data } = await axios.post('/api/auth/register', arg);
 
       setAuthHeader(data.token);
 
@@ -33,7 +32,7 @@ export const logIn = createAsyncThunk(
   'auth/login',
   async (arg, { rejectWithValue }) => {
     try {
-      const { data } = await contactApi.post('api/auth/login', arg);
+      const { data } = await axios.post('/api/auth/login', arg);
       setAuthHeader(data.token);
       return data;
     } catch (error) {
@@ -46,7 +45,7 @@ export const logOut = createAsyncThunk(
   'auth/logout',
   async (_, { rejectWithValue }) => {
     try {
-      await axios.post('https://contacts-04gv.onrender.com/api/auth/logout');
+      await axios.post('/api/auth/logout');
       ClearAuthHeader();
     } catch (error) {
       return rejectWithValue(error.message);
@@ -58,20 +57,16 @@ export const fetchCurrentUser = createAsyncThunk(
   'auth/refresh',
   async (_, { getState, rejectWithValue }) => {
     const state = getState();
-    console.log(state);
+
     const persistedToken = state.auth.token;
-    console.log(persistedToken);
+
     if (persistedToken === null) {
       return rejectWithValue('Unable to fetch user');
     }
 
-    console.log('fetchCurrentUser');
-
     try {
       setAuthHeader(persistedToken);
-      const { data } = await axios.get(
-        'https://contacts-04gv.onrender.com/api/auth/current'
-      );
+      const { data } = await axios.get('/api/auth/current');
 
       return data.user;
     } catch (error) {
