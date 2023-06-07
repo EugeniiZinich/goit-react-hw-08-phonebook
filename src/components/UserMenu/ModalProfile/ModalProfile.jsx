@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import EditIcon from '@mui/icons-material/Edit';
-import { StyledTextField, EditBtn } from './ModalProfile.mui';
+import { StyledTextField, EditBtn } from './ModalProfile.mui.styled';
 import { AvatarEdit } from '../AvatarEdit/AvatarEdit';
 import { EditForm } from './ModalProfile.styled';
 import { updateAvatar, updateSubscription } from 'redux/Auth/authOperation';
@@ -26,17 +26,17 @@ const style = {
 };
 
 export const ModalProfile = ({ variantColor }) => {
-  const [avatarPrev, setAvatarPrev] = useState();
+  const [avatarPrev, setAvatarPrev] = useState('');
   const [open, setOpen] = useState(false);
   const [editSubscr, setEditSubscr] = useState('');
   const dispatch = useDispatch();
 
-  console.log(editSubscr);
-
-  const handleAvatarChange = event => {
-    const avatar = event.target.files[0];
+  const handleAvatarChange = e => {
+    const avatar = e.target.files[0];
     setAvatarPrev(URL.createObjectURL(avatar));
   };
+
+  console.log(avatarPrev);
 
   const changeAvatar = () => {
     const formData = new FormData();
@@ -44,7 +44,8 @@ export const ModalProfile = ({ variantColor }) => {
     dispatch(updateAvatar(formData));
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = e => {
+    e.preventDefault();
     if (avatarPrev) changeAvatar();
     if (editSubscr) updateSubscription({ subscription: editSubscr });
   };

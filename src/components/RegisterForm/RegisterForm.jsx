@@ -20,8 +20,6 @@ export const RegisterForm = () => {
   const [subscription, setSubscription] = useState('');
   const { isRegistered } = useAuth();
 
-  console.log(subscription);
-
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
       case 'name':

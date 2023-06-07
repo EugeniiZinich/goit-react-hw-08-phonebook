@@ -1,4 +1,4 @@
-import { createSlice, isPending } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import {
   register,
   logIn,
@@ -81,6 +81,7 @@ const authSlice = createSlice({
 
     [updateAvatar.pending]: handlePendingUpdate,
     [updateAvatar.fulfilled](state, action) {
+      console.log(action.payload);
       state.avatarUrl = action.payload.avatarUrl;
       state.isPending = false;
     },

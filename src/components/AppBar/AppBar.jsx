@@ -7,7 +7,7 @@ import { AppBarContainer } from './AppBar.mui.style';
 import { theme } from 'config/breakpoints/breakpoints';
 
 export const NavBar = () => {
-  const { isLoggedIn, avatarUrl } = useAuth();
+  const { isLoggedIn } = useAuth();
 
   return (
     <Container disableGutters maxWidth={false}>
@@ -21,7 +21,7 @@ export const NavBar = () => {
             }}
           >
             <Navigation />
-            {isLoggedIn ? <UserMenu avatarUrl={avatarUrl} /> : <AuthNav />}
+            {isLoggedIn ? <UserMenu /> : <AuthNav />}
           </Toolbar>
         </AppBarContainer>
       </ThemeProvider>

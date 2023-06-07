@@ -9,13 +9,11 @@ import { StyledBadge, LogoutBtn } from './UserMenu.mui.styled';
 import { getLocation } from 'redux/ContactsSlice/selectors';
 import { ModalProfile } from './ModalProfile/ModalProfile';
 
-export const UserMenu = ({ avatarUrl }) => {
+export const UserMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
   const dispatch = useDispatch();
   const location = useSelector(getLocation);
   const { user } = useAuth();
-
-  const avatar = avatarUrl;
 
   const variantColor =
     location === '/contacts' || location === '/addcontact' ? '#fff' : '#1976d2';
