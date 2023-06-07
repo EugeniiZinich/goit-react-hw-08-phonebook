@@ -3,9 +3,13 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
+import { useAuth } from 'components/hooks/useAuth';
 
-export const SubscriptionRadio = ({ subscription }) => {
+export const SubscriptionRadio = ({ subscription, editSubscr }) => {
+  const { isLoggedIn } = useAuth();
+
   const handleSubscr = e => {
+    if (isLoggedIn) return;
     subscription(e.target.value);
   };
 
@@ -18,6 +22,7 @@ export const SubscriptionRadio = ({ subscription }) => {
         row
         aria-labelledby="demo-row-radio-buttons-group-label"
         name="row-radio-buttons-group"
+        onChange={e => editSubscr(e.target.value)}
       >
         <FormControlLabel value="starter" control={<Radio />} label="Starter" />
         <FormControlLabel value="pro" control={<Radio />} label="Pro" />

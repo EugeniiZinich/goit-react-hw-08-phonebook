@@ -4,7 +4,6 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 axios.defaults.baseURL = 'https://contacts-04gv.onrender.com';
 
 export const setAuthHeader = token => {
-  console.log(token);
   if (token === undefined) return;
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
@@ -69,6 +68,30 @@ export const fetchCurrentUser = createAsyncThunk(
       const { data } = await axios.get('/api/auth/current');
 
       return data.user;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const updateAvatar = createAsyncThunk(
+  'auth/avatar',
+  async (avatar, { rejectWithValue }) => {
+    try {
+      const data = await axios.patch('/api/auth/avatars', avatar);
+      console.log(data);
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const updateSubscription = createAsyncThunk(
+  'auth/subscription',
+  async (subscription, { rejectWithValue }) => {
+    try {
+      const data = await axios.patch('/api/auth/subscription', subscription);
+      console.log(data);
     } catch (error) {
       return rejectWithValue(error.message);
     }
