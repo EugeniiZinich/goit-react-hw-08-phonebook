@@ -1,12 +1,27 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { register, logIn, logOut, fetchCurrentUser } from './authOperation';
+import { createSlice, isPending } from '@reduxjs/toolkit';
+import {
+  register,
+  logIn,
+  logOut,
+  fetchCurrentUser,
+  updateAvatar,
+  updateSubscription,
+} from './authOperation';
 
-const handlePending = state => {
+const handleRefreshing = state => {
   state.isRefreshing = true;
 };
 
-const handleRejected = state => {
+const handleRejectedRefreshing = state => {
   state.isRefreshing = false;
+};
+
+const handlePendingUpdate = state => {
+  state.isPending = true;
+};
+
+const handlePendingRejected = state => {
+  state.isPending = false;
 };
 
 const initialState = {
@@ -14,7 +29,10 @@ const initialState = {
   token: null,
   isLoggedIn: false,
   isRefreshing: false,
+  isPending: false,
   error: null,
+  avatarUrl: '',
+  subscription: '',
 };
 
 const authSlice = createSlice({
@@ -27,22 +45,24 @@ const authSlice = createSlice({
     },
   },
   extraReducers: {
-    [register.pending]: handlePending,
+    [register.pending]: handleRefreshing,
     [register.fulfilled](state, action) {
       state.user = action.payload;
       state.token = action.payload.token;
       state.isLoggedIn = true;
       state.isRefreshing = false;
+      state.avatarUrl = action.payload.avatarUrl;
     },
-    [register.rejected]: handleRejected,
+    [register.rejected]: handleRejectedRefreshing,
 
-    [logIn.pending]: handlePending,
+    [logIn.pending]: handleRefreshing,
     [logIn.fulfilled](state, action) {
       state.user = action.payload;
       state.token = action.payload.token;
       state.isLoggedIn = true;
+      state.avatarUrl = action.payload.avatarUrl;
     },
-    [logIn.rejected]: handleRejected,
+    [logIn.rejected]: handleRejectedRefreshing,
 
     [logOut.fulfilled](state, _) {
       state.user = { name: null, email: null };
@@ -51,13 +71,27 @@ const authSlice = createSlice({
       state.isRefreshing = false;
     },
 
-    [fetchCurrentUser.pending]: handlePending,
+    [fetchCurrentUser.pending]: handleRefreshing,
     [fetchCurrentUser.fulfilled](state, action) {
       state.user = action.payload;
       state.isLoggedIn = true;
       state.isRefreshing = false;
     },
-    [fetchCurrentUser.rejected]: handleRejected,
+    [fetchCurrentUser.rejected]: handleRejectedRefreshing,
+
+    [updateAvatar.pending]: handlePendingUpdate,
+    [updateAvatar.fulfilled](state, action) {
+      state.avatarUrl = action.payload.avatarUrl;
+      state.isPending = false;
+    },
+    [updateAvatar.rejected]: handlePendingRejected,
+
+    [updateSubscription.pending]: handlePendingUpdate,
+    [updateSubscription.fulfilled](state, action) {
+      state.subscription = action.payload.subscription;
+      state.isPending = false;
+    },
+    [updateSubscription.rejected]: handlePendingRejected,
   },
 });
 

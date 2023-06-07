@@ -38,9 +38,5 @@ export const StyledLink = styled(NavLink)`
   &.active::after,
   &.active::before {
     transform: scaleX(1);
-
-    /* @media (min-width: 320px) and (max-width: 769px) {
-      transform: scaleX(1);
-    } */
   }
 `;
