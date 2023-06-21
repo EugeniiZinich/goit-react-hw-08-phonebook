@@ -13,7 +13,7 @@ export const UserMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
   const dispatch = useDispatch();
   const location = useSelector(getLocation);
-  const { user } = useAuth();
+  const { user, avatarUrl } = useAuth();
 
   const variantColor =
     location === '/contacts' || location === '/addcontact' ? '#fff' : '#1976d2';
@@ -38,7 +38,7 @@ export const UserMenu = () => {
             anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
             variant="dot"
           >
-            <Avatar alt={user?.name} src={user?.avatarURL} />
+            <Avatar alt={user?.name} src={avatarUrl} />
           </StyledBadge>
         </Stack>
       </button>

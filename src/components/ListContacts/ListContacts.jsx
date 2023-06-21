@@ -28,8 +28,8 @@ const ListContacts = ({ children }) => {
         {items?.length > 0 &&
           [...contact].reverse().map(({ name, _id, phone }) => {
             return (
-              <ContactCard key={_id}>
-                <ContactItem name={name} id={_id} phone={phone} />
+              <ContactCard>
+                <ContactItem key={_id} name={name} id={_id} phone={phone} />
               </ContactCard>
             );
           })}

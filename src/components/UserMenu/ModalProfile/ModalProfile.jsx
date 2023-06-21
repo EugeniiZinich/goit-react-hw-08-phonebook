@@ -27,27 +27,30 @@ const style = {
 
 export const ModalProfile = ({ variantColor }) => {
   const [avatarPrev, setAvatarPrev] = useState('');
+  const [newAvatar, setNewAvatar] = useState('');
   const [open, setOpen] = useState(false);
   const [editSubscr, setEditSubscr] = useState('');
   const dispatch = useDispatch();
 
   const handleAvatarChange = e => {
     const avatar = e.target.files[0];
+
+    setNewAvatar(avatar);
+
     setAvatarPrev(URL.createObjectURL(avatar));
   };
 
-  console.log(avatarPrev);
-
   const changeAvatar = () => {
     const formData = new FormData();
-    formData.append('avatar', avatarPrev);
+    formData.append('avatar', newAvatar);
+
     dispatch(updateAvatar(formData));
   };
 
   const handleSubmit = e => {
     e.preventDefault();
     if (avatarPrev) changeAvatar();
-    if (editSubscr) updateSubscription({ subscription: editSubscr });
+    if (editSubscr) dispatch(updateSubscription({ subscription: editSubscr }));
   };
 
   return (
