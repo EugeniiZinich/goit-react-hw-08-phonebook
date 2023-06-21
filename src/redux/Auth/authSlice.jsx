@@ -76,18 +76,18 @@ const authSlice = createSlice({
       state.user = action.payload;
       state.isLoggedIn = true;
       state.isRefreshing = false;
+      state.avatarUrl = action.payload.avatarURL;
     },
     [fetchCurrentUser.rejected]: handleRejectedRefreshing,
 
     [updateAvatar.pending]: handlePendingUpdate,
     [updateAvatar.fulfilled](state, action) {
-      console.log(action.payload);
-      state.avatarUrl = action.payload.avatarUrl;
+      state.avatarUrl = action.payload.avatarURL;
       state.isPending = false;
     },
     [updateAvatar.rejected]: handlePendingRejected,
 
-    [updateSubscription.pending]: handlePendingUpdate,
+    [updateSubscription.pending](state, action) {},
     [updateSubscription.fulfilled](state, action) {
       state.subscription = action.payload.subscription;
       state.isPending = false;
