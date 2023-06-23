@@ -1,36 +1,39 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import EditIcon from '@mui/icons-material/Edit';
-import { StyledTextField, EditBtn } from './ModalProfile.mui.styled';
+import CloseIcon from '@mui/icons-material/Close';
+import {
+  StyledTextField,
+  EditBtn,
+  StyledEditBtn,
+  boxStyle,
+  iconStyle,
+} from './ModalProfile.mui.styled';
 import { AvatarEdit } from '../AvatarEdit/AvatarEdit';
-import { EditForm } from './ModalProfile.styled';
-import { updateAvatar, updateSubscription } from 'redux/Auth/authOperation';
+import { EditForm, CloseBtn } from './ModalProfile.styled';
+import {
+  updateAvatar,
+  updateSubscription,
+  updateName,
+} from 'redux/Auth/authOperation';
 import { SubscriptionRadio } from 'components/SubscriptionRadio/SubscriptionRadio';
-
-const style = {
-  position: 'absolute',
-  display: 'grid',
-  playsItem: 'center',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  borderRadius: '10px',
-  boxShadow: 24,
-
-  p: 4,
-};
+import { useAuth } from 'components/hooks/useAuth';
 
 export const ModalProfile = ({ variantColor }) => {
   const [avatarPrev, setAvatarPrev] = useState('');
   const [newAvatar, setNewAvatar] = useState('');
   const [open, setOpen] = useState(false);
   const [editSubscr, setEditSubscr] = useState('');
+  const [editName, setEditName] = useState('');
   const dispatch = useDispatch();
+  const { user } = useAuth();
+  // console.log(user);
+
+  const nameInputValue = e => {
+    setEditName(e.target.value);
+  };
 
   const handleAvatarChange = e => {
     const avatar = e.target.files[0];
@@ -51,33 +54,32 @@ export const ModalProfile = ({ variantColor }) => {
     e.preventDefault();
     if (avatarPrev) changeAvatar();
     if (editSubscr) dispatch(updateSubscription({ subscription: editSubscr }));
+    if (editName) dispatch(updateName({ name: editName }));
   };
 
   return (
-    <div>
-      <Button
-        onClick={() => setOpen(!open)}
-        sx={{
-          color: '#fff',
-          backgroundColor: '#0cf',
-          width: 150,
-          height: 40,
-          borderRadius: '10rem',
-          '&:hover': {
-            backgroundColor: '#2f8da4',
-          },
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
+    >
+      <StyledEditBtn onClick={() => setOpen(!open)}>
+        <p>Edit profile</p>
+        <EditIcon sx={iconStyle} />
+      </StyledEditBtn>
+
+      <p
+        style={{
+          color: variantColor,
+          marginTop: 10,
+          marginLeft: 10,
         }}
       >
-        <p>Edit profile</p>
-        <EditIcon
-          sx={{
-            height: '17px',
-            color: '#fff',
-            marginLeft: 1,
-            marginBottom: 0.5,
-          }}
-        />
-      </Button>
+        Subscription: {user?.subscription}
+      </p>
 
       <Modal
         open={open}
@@ -85,7 +87,10 @@ export const ModalProfile = ({ variantColor }) => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
+        <Box sx={boxStyle}>
+          <CloseBtn onClick={() => setOpen(!open)}>
+            <CloseIcon />
+          </CloseBtn>
           <EditForm onSubmit={handleSubmit}>
             <AvatarEdit
               handleAvatarChange={handleAvatarChange}
@@ -93,15 +98,10 @@ export const ModalProfile = ({ variantColor }) => {
             />
             <label>
               <StyledTextField
+                onChange={nameInputValue}
+                value={editName}
                 id="outlined-basic"
                 label="Name"
-                variant="outlined"
-              />
-            </label>
-            <label>
-              <StyledTextField
-                id="outlined-basic"
-                label="Email"
                 variant="outlined"
               />
             </label>

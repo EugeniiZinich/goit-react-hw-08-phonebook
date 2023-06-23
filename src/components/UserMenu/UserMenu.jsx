@@ -14,7 +14,6 @@ export const UserMenu = () => {
   const dispatch = useDispatch();
   const location = useSelector(getLocation);
   const { user, avatarUrl } = useAuth();
-
   const variantColor =
     location === '/contacts' || location === '/addcontact' ? '#fff' : '#1976d2';
 
