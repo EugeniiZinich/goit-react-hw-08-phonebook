@@ -5,6 +5,7 @@ import {
   selectUser,
   selectIsRegistered,
   selectUserAvatar,
+  selectUserSubscr,
 } from 'redux/Auth/selectors';
 
 export const useAuth = () => {
@@ -13,6 +14,7 @@ export const useAuth = () => {
   const user = useSelector(selectUser);
   const isRegistered = useSelector(selectIsRegistered);
   const avatarUrl = useSelector(selectUserAvatar);
+  const subscription = useSelector(selectUserSubscr);
 
   return {
     isLoggedIn,
@@ -20,5 +22,6 @@ export const useAuth = () => {
     user,
     isRegistered,
     avatarUrl,
+    subscription,
   };
 };

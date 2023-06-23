@@ -6,7 +6,6 @@ import { HomeContainer } from './HomePage.mui.styled';
 import { addLocation } from 'redux/ContactsSlice/contactSlice';
 import { setAuthHeader } from 'redux/Auth/authOperation';
 import { updateToken } from 'redux/Auth/authSlice';
-// import { fetchCurrentUser } from 'redux/Auth/authOperation';
 
 export default function HomePage() {
   const dispatch = useDispatch();

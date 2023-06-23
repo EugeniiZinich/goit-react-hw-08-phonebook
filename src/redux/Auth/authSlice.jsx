@@ -6,6 +6,7 @@ import {
   fetchCurrentUser,
   updateAvatar,
   updateSubscription,
+  updateName,
 } from './authOperation';
 
 const handleRefreshing = state => {
@@ -57,10 +58,11 @@ const authSlice = createSlice({
 
     [logIn.pending]: handleRefreshing,
     [logIn.fulfilled](state, action) {
-      state.user = action.payload;
+      state.user = action.payload.user;
       state.token = action.payload.token;
       state.isLoggedIn = true;
-      state.avatarUrl = action.payload.avatarUrl;
+      state.isRefreshing = false;
+      state.avatarUrl = action.payload.avatarURL;
     },
     [logIn.rejected]: handleRejectedRefreshing,
 
@@ -87,12 +89,19 @@ const authSlice = createSlice({
     },
     [updateAvatar.rejected]: handlePendingRejected,
 
-    [updateSubscription.pending](state, action) {},
+    [updateSubscription.pending]: handlePendingUpdate,
     [updateSubscription.fulfilled](state, action) {
-      state.subscription = action.payload.subscription;
+      state.user.subscription = action.payload.subscription;
       state.isPending = false;
     },
     [updateSubscription.rejected]: handlePendingRejected,
+
+    [updateName.pending]: handlePendingUpdate,
+    [updateName.fulfilled](state, action) {
+      state.user.name = action.payload.name;
+      state.isPending = false;
+    },
+    [updateName.rejected]: handlePendingRejected,
   },
 });
 

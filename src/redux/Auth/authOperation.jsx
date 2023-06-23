@@ -3,8 +3,6 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 axios.defaults.baseURL = 'https://contacts-04gv.onrender.com';
 
-// axios.defaults.baseURL = 'http://localhost:3030';
-
 export const setAuthHeader = token => {
   if (token === undefined) return;
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -96,6 +94,19 @@ export const updateSubscription = createAsyncThunk(
         '/api/auth/subscription',
         subscription
       );
+
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const updateName = createAsyncThunk(
+  'auth/name',
+  async (name, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.patch('/api/auth/name', name);
 
       return data;
     } catch (error) {
