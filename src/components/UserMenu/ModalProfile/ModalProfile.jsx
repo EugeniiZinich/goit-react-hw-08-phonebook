@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import EditIcon from '@mui/icons-material/Edit';
@@ -30,9 +30,6 @@ export const ModalProfile = ({ variantColor }) => {
   const [editName, setEditName] = useState('');
   const dispatch = useDispatch();
   const { user, isPending } = useAuth();
-  console.log(isPending);
-
-  const data = useSelector(state => console.log(state));
 
   const nameInputValue = e => {
     setEditName(e.target.value);
