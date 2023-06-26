@@ -7,6 +7,8 @@ import { RestrictedRoute } from 'components/RestrictedRoute';
 import { PrivateRoute } from 'components/PrivateRoute';
 import { useAuth } from 'components/hooks/useAuth';
 import { GlobalStyle } from 'components/GlobalStyle';
+import { setAuthHeader } from 'redux/Auth/authOperation';
+import { updateToken } from 'redux/Auth/authSlice';
 
 const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
 const ContactPage = lazy(() => import('../pages/Contacts/Contacts'));
@@ -19,6 +21,17 @@ export default function App() {
   const dispatch = useDispatch();
 
   const { isRefreshing } = useAuth;
+
+  useEffect(() => {
+    const urlSearchParams = new URLSearchParams(window.location.search);
+    const params = Object.fromEntries(urlSearchParams.entries());
+    const newToken = params.token;
+
+    if (newToken) {
+      setAuthHeader(newToken);
+      dispatch(updateToken(newToken));
+    }
+  }, [dispatch]);
 
   useEffect(() => {
     dispatch(fetchCurrentUser());

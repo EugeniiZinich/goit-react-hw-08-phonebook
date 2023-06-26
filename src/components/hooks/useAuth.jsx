@@ -6,6 +6,7 @@ import {
   selectIsRegistered,
   selectUserAvatar,
   selectUserSubscr,
+  selectIsPending,
 } from 'redux/Auth/selectors';
 
 export const useAuth = () => {
@@ -15,6 +16,7 @@ export const useAuth = () => {
   const isRegistered = useSelector(selectIsRegistered);
   const avatarUrl = useSelector(selectUserAvatar);
   const subscription = useSelector(selectUserSubscr);
+  const isPending = useSelector(selectIsPending);
 
   return {
     isLoggedIn,
@@ -23,5 +25,6 @@ export const useAuth = () => {
     isRegistered,
     avatarUrl,
     subscription,
+    isPending,
   };
 };

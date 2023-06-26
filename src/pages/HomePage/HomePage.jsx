@@ -4,22 +4,14 @@ import { useLocation } from 'react-router-dom';
 import { Home } from 'components/Home/Home';
 import { HomeContainer } from './HomePage.mui.styled';
 import { addLocation } from 'redux/ContactsSlice/contactSlice';
-import { setAuthHeader } from 'redux/Auth/authOperation';
-import { updateToken } from 'redux/Auth/authSlice';
+import { fetchCurrentUser } from 'redux/Auth/authOperation';
 
 export default function HomePage() {
   const dispatch = useDispatch();
   const location = useLocation();
 
   useEffect(() => {
-    const urlSearchParams = new URLSearchParams(window.location.search);
-    const params = Object.fromEntries(urlSearchParams.entries());
-    const newToken = params.token;
-
-    if (newToken) {
-      setAuthHeader(newToken);
-      dispatch(updateToken(newToken));
-    }
+    dispatch(fetchCurrentUser());
   }, [dispatch]);
 
   useEffect(() => {

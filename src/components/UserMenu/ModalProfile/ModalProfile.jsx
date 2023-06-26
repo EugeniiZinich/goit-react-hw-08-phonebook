@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import EditIcon from '@mui/icons-material/Edit';
@@ -20,6 +20,7 @@ import {
 } from 'redux/Auth/authOperation';
 import { SubscriptionRadio } from 'components/SubscriptionRadio/SubscriptionRadio';
 import { useAuth } from 'components/hooks/useAuth';
+import { Spinner } from 'components/Loader/Loader';
 
 export const ModalProfile = ({ variantColor }) => {
   const [avatarPrev, setAvatarPrev] = useState('');
@@ -28,12 +29,16 @@ export const ModalProfile = ({ variantColor }) => {
   const [editSubscr, setEditSubscr] = useState('');
   const [editName, setEditName] = useState('');
   const dispatch = useDispatch();
-  const { user } = useAuth();
-  // console.log(user);
+  const { user, isPending } = useAuth();
+  console.log(isPending);
+
+  const data = useSelector(state => console.log(state));
 
   const nameInputValue = e => {
     setEditName(e.target.value);
   };
+
+  console.log(5);
 
   const handleAvatarChange = e => {
     const avatar = e.target.files[0];
@@ -73,7 +78,7 @@ export const ModalProfile = ({ variantColor }) => {
 
       <p
         style={{
-          color: variantColor,
+          color: `${variantColor}`,
           marginTop: 10,
           marginLeft: 10,
         }}
@@ -106,7 +111,11 @@ export const ModalProfile = ({ variantColor }) => {
               />
             </label>
             <SubscriptionRadio editSubscr={setEditSubscr} />
-            <EditBtn type="submit">Save changes</EditBtn>
+            {isPending ? (
+              <Spinner />
+            ) : (
+              <EditBtn type="submit">Save changes</EditBtn>
+            )}
           </EditForm>
         </Box>
       </Modal>

@@ -9,3 +9,5 @@ export const selectIsRegistered = state => state.auth.isRegistered;
 export const selectUserAvatar = state => state.auth.avatarUrl;
 
 export const selectUserSubscr = state => state.subscription;
+
+export const selectIsPending = state => state.isPending;
